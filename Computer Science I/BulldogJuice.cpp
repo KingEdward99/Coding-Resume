@@ -33,6 +33,8 @@ void BulldogJuice::menu(){
     cout << " Apple Juice: $2.00" << endl;
     cout << " Orpple Juice: $2.00" << endl;
     cout << " Water: $1.00" << endl;
+
+    cout << "What would you like to order?" << endl; 
 }
 
 /*
