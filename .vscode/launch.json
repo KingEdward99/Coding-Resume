@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/eddyk99/Documents/GitHub/Coding-Resume/Analysis of Algorithm",
-      "program": "/Users/eddyk99/Documents/GitHub/Coding-Resume/Analysis of Algorithm/build/Debug/outDebug"
+      "cwd": "/Users/eddyk99/Documents/GitHub/Coding-Resume/Computer Science I",
+      "program": "/Users/eddyk99/Documents/GitHub/Coding-Resume/Computer Science I/build/Debug/outDebug"
     }
   ]
 }

@@ -1,25 +1,41 @@
 //This project is a juice store that sells juice to customers
-// Name: eddy Koundjou Yem
+// Name: Eddy Koundjou Yem
 // 
 #include <iostream>
 using namespace std; 
+
 //functions we need
-void collectOrder(); 
-
+class BulldogJuice{
+    public:
+int orangeJuice;
+int appleJuice;
+int orppleJuice;
+int water; 
 void menu(); 
+private:
+    double waterPrice = 1.00; 
+    double orppleJuicePrice, orangeJuicePrice, appleJuicePrice = 2.00;
+//void collectOrder(int orangeJuice, int appleJuice, int orppleJuice, int water);
+//double calculatingPrice(int orangeJuice, int appleJuice, int orppleJuice, int water); 
+};
 
-int main (){
+int main() {
     //menu items
+    BulldogJuice JuiceStore; 
+    JuiceStore.menu(); 
     return 0; 
 }
 
-void menu(){
-    int orangeJuice, appleJuice, orppleJuice, water;
-    double waterPrice = 1.00; 
-    double orangeJuicePrice, appleJuicePrice = 2.00; 
-
+void BulldogJuice::menu(){
+    cout << "Welcome to the Bulldog Juice Store." << endl;
+    cout << "The following is our menu." << endl; 
+    cout << " Orange Juice: $2.00" << endl;
+    cout << " Apple Juice: $2.00" << endl;
+    cout << " Orpple Juice: $2.00" << endl;
+    cout << " Water: $1.00" << endl;
 }
 
+/*
 double orderProcessing(int orangeJuice, int appleJuice, int orppleJuice, int water, double waterPrice, double appleJuicePrice, double orangeJuicePrice){
     double tax = 0.06; 
     double totalCost = 0.00;
@@ -36,4 +52,23 @@ double orderProcessing(int orangeJuice, int appleJuice, int orppleJuice, int wat
 
 void collectOrder() {
     cout << "What would you like to order today?" << endl;
+    cout << "How much water do you want?" << endl;
+    cin >> water;
+    cout << "How much apple juice do you want? " << endl; 
+    cin >> appleJuice;
+    cout << "How much orange juice do you want?" << endl; 
+    cin >> orangeJuice; 
+    cout << "How much orpple juice do you want?" << endl;
+    cin >> orppleJuice; 
+    cout << "How much water do you want?" << endl;
+    cin >> water; 
+}
+
+double calculatingPrice(int orangeJuice, int appleJuice, int orppleJuice, int water ){
+
+return 1; 
+};
+*/
+void Tester() {
+    cout << "Testing"; 
 }
