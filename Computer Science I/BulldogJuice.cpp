@@ -5,24 +5,25 @@
 using namespace std; 
 
 //functions we need
-class BulldogJuice{
-    public:
-int orangeJuice;
-int appleJuice;
-int orppleJuice;
-int water; 
-void menu(); 
-private:
+class BulldogJuice {
+
+ public:
+    void collectOrder(int& orangeJuice, int& appleJuice, int& orppleJuice, int& water);
+    void menu(); 
+ private:
     double waterPrice = 1.00; 
     double orppleJuicePrice, orangeJuicePrice, appleJuicePrice = 2.00;
-//void collectOrder(int orangeJuice, int appleJuice, int orppleJuice, int water);
-//double calculatingPrice(int orangeJuice, int appleJuice, int orppleJuice, int water); 
+ //double calculatingPrice(int orangeJuice, int appleJuice, int orppleJuice, int water); 
 };
 
 int main() {
     //menu items
     BulldogJuice JuiceStore; 
+
+    int orangeJuice, appleJuice, orppleJuice, water; 
+
     JuiceStore.menu(); 
+    JuiceStore.collectOrder(orangeJuice, appleJuice, orppleJuice, water);
     return 0; 
 }
 
@@ -32,9 +33,21 @@ void BulldogJuice::menu(){
     cout << " Orange Juice: $2.00" << endl;
     cout << " Apple Juice: $2.00" << endl;
     cout << " Orpple Juice: $2.00" << endl;
-    cout << " Water: $1.00" << endl;
+    cout << " Water: $1.00" << endl; 
+}
 
-    cout << "What would you like to order?" << endl; 
+void BulldogJuice::collectOrder(int& orangeJuice, int& appleJuice, int& orppleJuice, int& water) {
+    cout << "What would you like to order today?" << endl;
+    cout << "How much water do you want?" << endl;
+    cin >> water;
+    cout << "How much apple juice do you want? " << endl; 
+    cin >> appleJuice;
+    cout << "How much orange juice do you want?" << endl; 
+    cin >> orangeJuice; 
+    cout << "How much orpple juice do you want?" << endl;
+    cin >> orppleJuice; 
+    cout << "How much water do you want?" << endl;
+    cin >> water; 
 }
 
 /*
@@ -51,21 +64,9 @@ double orderProcessing(int orangeJuice, int appleJuice, int orppleJuice, int wat
 
     return totalCost; 
 } 
+*/
 
-void collectOrder() {
-    cout << "What would you like to order today?" << endl;
-    cout << "How much water do you want?" << endl;
-    cin >> water;
-    cout << "How much apple juice do you want? " << endl; 
-    cin >> appleJuice;
-    cout << "How much orange juice do you want?" << endl; 
-    cin >> orangeJuice; 
-    cout << "How much orpple juice do you want?" << endl;
-    cin >> orppleJuice; 
-    cout << "How much water do you want?" << endl;
-    cin >> water; 
-}
-
+/*
 double calculatingPrice(int orangeJuice, int appleJuice, int orppleJuice, int water ){
 
 return 1; 
