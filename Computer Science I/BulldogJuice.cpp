@@ -10,20 +10,25 @@ class BulldogJuice {
  public:
     void collectOrder(int& orangeJuice, int& appleJuice, int& orppleJuice, int& water);
     void menu(); 
- private:
+    double orderProcessing(int& orangeJuice, int& appleJuice, int& orppleJuice, int& water, double& waterPrice, double& appleJuicePrice, double& orangeJuicePrice);
     double waterPrice = 1.00; 
     double orppleJuicePrice, orangeJuicePrice, appleJuicePrice = 2.00;
  //double calculatingPrice(int orangeJuice, int appleJuice, int orppleJuice, int water); 
 };
 
 int main() {
-    //menu items
+    //Creating an object of the BulldogJuice class
     BulldogJuice JuiceStore; 
 
+    //menu items and prices 
     int orangeJuice, appleJuice, orppleJuice, water; 
+    double waterPrice = 1.00;
+    double orppleJuicePrice, orangeJuicePrice, appleJuicePrice = 2.00;
 
+    //calling the functions
     JuiceStore.menu(); 
     JuiceStore.collectOrder(orangeJuice, appleJuice, orppleJuice, water);
+    JuiceStore.orderProcessing(orangeJuice, appleJuice, orppleJuice, water, waterPrice, appleJuicePrice, orangeJuicePrice);
     return 0; 
 }
 
@@ -50,8 +55,8 @@ void BulldogJuice::collectOrder(int& orangeJuice, int& appleJuice, int& orppleJu
     cin >> water; 
 }
 
-/*
-double orderProcessing(int orangeJuice, int appleJuice, int orppleJuice, int water, double waterPrice, double appleJuicePrice, double orangeJuicePrice){
+
+double BulldogJuice::orderProcessing(int& orangeJuice, int& appleJuice, int& orppleJuice, int& water, double& waterPrice, double& appleJuicePrice, double& orangeJuicePrice){
     double tax = 0.06; 
     double totalCost = 0.00;
 
@@ -61,10 +66,11 @@ double orderProcessing(int orangeJuice, int appleJuice, int orppleJuice, int wat
 
     double cost = (totalOrangeCost+totalAppleCost+totalWaterCost);
     totalCost = cost + (0.06 * cost); 
+    cout << "The total cost of your order is: $" << totalCost << endl;
 
     return totalCost; 
 } 
-*/
+
 
 /*
 double calculatingPrice(int orangeJuice, int appleJuice, int orppleJuice, int water ){
