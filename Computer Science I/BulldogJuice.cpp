@@ -1,14 +1,16 @@
 //This project is a juice store that sells juice to customers
 // Name: Eddy Koundjou Yem
-// 
 #include <iostream>
 using namespace std; 
 
-//functions we need
+//Creating a class called BulldogJuice
 class BulldogJuice {
  public:
+    //items and prices
     double waterPrice = 1.00;
     double orppleJuicePrice, orangeJuicePrice, appleJuicePrice = 2.00;
+
+    //functions
     void collectOrder(int& orangeJuice, int& appleJuice, int& orppleJuice, int& water);
     void menu(); 
     double orderProcessing(int& orangeJuice, int& appleJuice, int& orppleJuice, int& water, double& waterPrice, double& appleJuicePrice, double& orangeJuicePrice);
@@ -30,6 +32,7 @@ int main() {
     return 0; 
 }
 
+//Presenting the menu to the customer
 void BulldogJuice::menu(){
     cout << "Welcome to the Bulldog Juice Store." << endl;
     cout << "The following is our menu." << endl; 
@@ -39,7 +42,9 @@ void BulldogJuice::menu(){
     cout << " Water: $1.00" << endl; 
 }
 
+//Collecting the order from the customer
 void BulldogJuice::collectOrder(int& orangeJuice, int& appleJuice, int& orppleJuice, int& water) {
+    //collecting the order from the customer
     cout << "What would you like to order today?" << endl;
     cout << "How much apple juice do you want? " << endl; 
     cin >> appleJuice;
@@ -51,6 +56,7 @@ void BulldogJuice::collectOrder(int& orangeJuice, int& appleJuice, int& orppleJu
     cin >> water; 
 }
 
+//Processing the customer's order
 double BulldogJuice::orderProcessing(int& orangeJuice, int& appleJuice, int& orppleJuice, int& water, double& waterPrice, double& appleJuicePrice, double& orangeJuicePrice){
     double tax = 0.06; 
     double totalCost = 0.00;

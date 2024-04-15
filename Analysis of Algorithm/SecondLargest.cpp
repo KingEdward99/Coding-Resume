@@ -1,0 +1,3 @@
+/*
+    This algorithm finds the second largest number in any array 
+*/
