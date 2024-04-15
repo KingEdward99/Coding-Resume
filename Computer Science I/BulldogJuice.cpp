@@ -6,14 +6,12 @@ using namespace std;
 
 //functions we need
 class BulldogJuice {
-
  public:
+    double waterPrice = 1.00;
+    double orppleJuicePrice, orangeJuicePrice, appleJuicePrice = 2.00;
     void collectOrder(int& orangeJuice, int& appleJuice, int& orppleJuice, int& water);
     void menu(); 
     double orderProcessing(int& orangeJuice, int& appleJuice, int& orppleJuice, int& water, double& waterPrice, double& appleJuicePrice, double& orangeJuicePrice);
-    double waterPrice = 1.00; 
-    double orppleJuicePrice, orangeJuicePrice, appleJuicePrice = 2.00;
- //double calculatingPrice(int orangeJuice, int appleJuice, int orppleJuice, int water); 
 };
 
 int main() {
@@ -43,8 +41,6 @@ void BulldogJuice::menu(){
 
 void BulldogJuice::collectOrder(int& orangeJuice, int& appleJuice, int& orppleJuice, int& water) {
     cout << "What would you like to order today?" << endl;
-    cout << "How much water do you want?" << endl;
-    cin >> water;
     cout << "How much apple juice do you want? " << endl; 
     cin >> appleJuice;
     cout << "How much orange juice do you want?" << endl; 
@@ -55,7 +51,6 @@ void BulldogJuice::collectOrder(int& orangeJuice, int& appleJuice, int& orppleJu
     cin >> water; 
 }
 
-
 double BulldogJuice::orderProcessing(int& orangeJuice, int& appleJuice, int& orppleJuice, int& water, double& waterPrice, double& appleJuicePrice, double& orangeJuicePrice){
     double tax = 0.06; 
     double totalCost = 0.00;
@@ -64,20 +59,9 @@ double BulldogJuice::orderProcessing(int& orangeJuice, int& appleJuice, int& orp
     double totalAppleCost = appleJuice * appleJuicePrice; 
     double totalWaterCost = water * waterPrice; 
 
-    double cost = (totalOrangeCost+totalAppleCost+totalWaterCost);
+    long double cost = (totalOrangeCost+totalAppleCost+totalWaterCost);
     totalCost = cost + (0.06 * cost); 
     cout << "The total cost of your order is: $" << totalCost << endl;
 
     return totalCost; 
 } 
-
-
-/*
-double calculatingPrice(int orangeJuice, int appleJuice, int orppleJuice, int water ){
-
-return 1; 
-};
-*/
-void Tester() {
-    cout << "Testing"; 
-}
