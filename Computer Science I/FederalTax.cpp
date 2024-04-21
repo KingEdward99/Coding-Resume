@@ -1,4 +1,4 @@
-//A program that can calculate the federal tax for a single person based on their income.
+//A program that can calculate the federal tax for a single person based on their income. C++ pg 502 
 #include <iostream>
 using namespace std;
 
