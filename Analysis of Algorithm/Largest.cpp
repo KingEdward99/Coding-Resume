@@ -3,7 +3,7 @@
 /*
 1. Create an empty array of 5
 2. Ask user for input
-3. Find the largest numbe r
+3. Find the largest number
 4. Print array and its largest number
 */
 #include <iostream> 
@@ -11,11 +11,8 @@ using namespace std;
 
 int main()
 {   
-    int size;; 
+    int size = 5; 
     int listOfNumbers[size]; 
-
-    //Asking for the size
-    cout << "How big is the array " << endl; 
 
     //Asking for the user input
     cout << "Enter 5 numbers and I will find the largest number" << endl;
