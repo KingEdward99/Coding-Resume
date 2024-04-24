@@ -17,10 +17,13 @@ class Set {
 int main() {
     cout << "Testing" << endl; 
     Set set;
+
+
     set.setCreator();
+    set.merger(0, 0);
     return 0;
 }
-
+// The setCreator function will create the two sets with the size of n given by the user
 void Set::setCreator() {
    int set1size, set2size = 0; 
    int set1[set1size], set2[set2size];
@@ -46,15 +49,28 @@ void Set::setCreator() {
        cin >> set2[i];
    }
 
-   cout << "The numbers you entered for set 1 is : ";
+   cout << "The numbers you entered for set 2 is : ";
    for(int i = 0; i < set2size; i++) {
        cout << set2[i] << " ";
    }
 }
 
-int merger(int set1[], int set2[]) {
-    //Merges two sets into one set
-    /*
+// The merger function will merge the two sets
+int  Set::merger(int set1[], int set2[]) {
+    int set1size, set2size = 0;
+    int mergeSet[set1size + set2size];
 
+    for(int i = 0; i < set1size; i++) {
+        mergeSet[i] = set1[i];
+    }
+    /*
+    for(int i = set1size; i < (set1size + set2size); i++) {
+        mergeSet[set1size + i] = set2[i];
+    }
     */
+
+    cout << "The merged set is : ";
+    for(int i = 0; i < (set1size + set2size); i++) {
+        cout << mergeSet[i] << " ";
+    }
 }
