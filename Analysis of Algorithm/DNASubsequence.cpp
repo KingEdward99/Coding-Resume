@@ -5,6 +5,7 @@
 #include <ctime>
 
 using namespace std; 
+
 // Function to generate a random DNA string of given length
 string generateRandomDNAString(int length) {
     string dnaString = "";
@@ -63,9 +64,10 @@ int main() {
     string lcs = findLongestCommonSubsequence(dnaString1, dnaString2);
 
     // Print the results
-    cout << "DNA String 1: " << dnaString1 << std::endl;
-    cout << "DNA String 2: " << dnaString2 << std::endl;
-    cout << "Longest Common Subsequence: " << lcs << std::endl;
+    cout << "DNA String 1: " << dnaString1 << endl;
+    cout << "DNA String 2: " << dnaString2 << endl;
+    cout << "Longest Common Subsequence: " << lcs << endl;
+    cout << "Length of Longest Common Subsequence: " << lcs.length() << endl;
 
     return 0;
 }
