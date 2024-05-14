@@ -21,50 +21,95 @@ To calculate the taxable income, subtract the sum of the standard exemption, the
 using namespace std;
 
 class FederalTax {
+  public:
     void getData(); // Getting basic info from the user
-    void taxAmount();
+    void taxAmount(); // Calculating the tax amount
+    double taxableIncome(); // The taxable income of the user
 };
 
 int main() {
 
   FederalTax userAccount; // Creating an object of the FederalTax class
 
+  userAccount.getData(); // Getting the data from the user
+
   return 0;   
 }
 
 void FederalTax::getData() {
-   double incomeFirstSpouse; 
-   double incomeSecondSpouse;
-   int pensionFund; 
-   int maritalStatus;
-   int childrenUnder14; 
-
+   double incomeFirstSpouse = 0;
+   double incomeSecondSpouse = 0;
+   double marriedIncome = 0; 
+   int pensionPercentage = 0;  
+   int maritalStatus = 0; 
+   int childrenUnder14 = 0;  
+   int personalExemptionMultiplier = 0; 
+   int standardExemption = 0;
+  
+  //Determing marital status
    cout << "What is your marital status? (1 for single, 2 for married): " << endl;
    cin >> maritalStatus;
 
-   if (maritalStatus == 1) {
-    int standardExemption = 4000;
-   }
-   else {
+   cout << "How many children under 14 do you have? " << endl;
+   cin >> childrenUnder14;
+
+   if (maritalStatus == 2) { //If the user is married
+    cout << "What is the income of the first spouse? " << endl;
+    cin >> incomeFirstSpouse;
+
+    cout << "What is the income of the second spouse? " << endl;
+    cin >> incomeSecondSpouse;
+
+    double marriedIncome = incomeFirstSpouse + incomeSecondSpouse; //Calculating the combined income of the married couple
+    personalExemptionMultiplier = 2 + childrenUnder14; //Calculating the personal exemption based on the number of children
     int standardExemption = 7000;
    }
+   else { //If the user is single
+    cout << "What is your income? " << endl;
+    cin >> incomeFirstSpouse;
+    personalExemptionMultiplier = 1 + childrenUnder14; //Calculating the personal exemption based on the number of children
+    int standardExemption = 4000;
+   }
+  
+   //Determinng how much the user wants to contribute to their pension fund
+    cout << "How much of your gross income would you like to contribute to your pension fund? Remember that you can only contirbute up to 6%." << endl;
+    cin >> pensionPercentage;
+
+    double actualPensionFund = pensionPercentage/100; //Converting the percentage to a decimal
+
+   cout << "The combined salary is: " << marriedIncome << endl;
+   cout << "The number of children are " << childrenUnder14 << endl;
+   cout << "The standard exemption is: " << standardExemption << endl;
+
+
 }
 
 void FederalTax::taxAmount() {
   //Tax rates 
-  double lowIncomeTaxRate = 0.15;
-  double midIncomeTaxRate = 0.25;
-  double highIncomeTaxRate = 0.35;
+ double taxRate = 0;
+ int taxableIncome = 0;
+ int tax = 0;
 
-  double grossIncome;
+ cout << "What is your taxable income? " << endl;
+ cin >> taxableIncome;
 
-  if (grossIncome > 0 && grossIncome <= 15000) {
-    double lowIncomeTax;
-  }
-  else if ( grossIncome > 15000 && grossIncome <= 40000) {
-    double midIncomeTax;
-  }
-  else {
-    double highIncomeTax;
-  }
+ if(taxableIncome < 15000) {
+   taxRate = 0.15;
+ }
+ else if(taxableIncome > 15000 && taxableIncome < 40000) {
+   taxRate = 0.25;
+   tax = 2250 + (taxableIncome - 15000) * taxRate;
+ }
+ else {
+   taxRate = 0.35;
+   tax = 8460 + (taxableIncome - 40000) * taxRate;
+ }
+
+
+  
+}
+
+double FederalTax::taxableIncome() {
+  double taxableIncome=0;
+
 }
