@@ -1,0 +1,32 @@
+/* This is to format our html page: StudentBusiness.js */
+
+.BusinessCategories { 
+    float: left;
+    width: 50%;
+    font-weight: lighter; 
+}
+
+.Business:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.Ads { 
+    float: right;
+    width: 50%; 
+}
+
+.SetFeatured{
+    display: flex;
+    width: 100%;
+}
+
+.SetFeatured div {
+    width: 50%;
+}
+
+.noMargin {
+    margin: 0;
+}
+
