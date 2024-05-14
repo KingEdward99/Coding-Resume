@@ -57,6 +57,7 @@
   "C_Cpp_Runner.msvcSecureNoWarnings": false,
   "cmake.configureOnOpen": true,
   "files.associations": {
-    "iostream": "cpp"
+    "iostream": "cpp",
+    "iosfwd": "cpp"
   }
 }
