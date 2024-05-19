@@ -26,8 +26,9 @@ class FederalTax {
     int maritalStatus;
     double grossSalary;
     double marriedIncome;
-    void getData(); // Getting tax data from the user 
-    double taxAmount(int maritalStatus, double grossSalary, double marriedIncome); // Calculating the tax amount owed 
+    double taxableIncome; 
+    void getData(int &maritalStatus, double &grossSalary, double &marriedIncome, double& taxableIncome, double &pensionAmount); // Getting tax data from the user 
+    double taxAmount(int &maritalStatus, double &grossSalary, double &marriedIncome, double& taxableIncome, double &pensionAmount); // Calculating the tax amount owed 
 };
 
 int main() {
@@ -36,13 +37,15 @@ int main() {
   int maritalStatus = 0;
   double grossSalary = 0;
   double marriedIncome = 0;
-  userAccount.getData(); // Getting the data from the user
-  userAccount.taxAmount(maritalStatus, grossSalary, marriedIncome); // Getting the taxable income of the user
+  double taxableIncome = 0;
+  double pensionAmount = 0;
+  userAccount.getData(maritalStatus,grossSalary,marriedIncome, taxableIncome, pensionAmount); // Getting the data from the user
+  userAccount.taxAmount(maritalStatus, grossSalary, marriedIncome, taxableIncome, pensionAmount); // Getting the taxable income of the user
 
   return 0;   
 }
 
-void FederalTax::getData() {
+void FederalTax::getData(int &maritalStatus, double &grossSalary, double &marriedIncome, double &taxableIncome, double &pensionAmount) {
   string maritalStatusString = "";
   int childrenUnder14 = 0;
   double incomeFirstSpouse = 0;
@@ -68,6 +71,7 @@ void FederalTax::getData() {
     cout << "Your gross salary is " << grossSalary << endl;
     cout << "The number of children under 14 you have is " << childrenUnder14 << endl;
     cout << "The percentage of your salary you want to contribute to your pension fund is "<< pensionPercentage << "% " << endl;
+    taxableIncome = grossSalary - (4000 + (1500 * childrenUnder14) + (pensionPercentage/100 * grossSalary))
   }
   else if (maritalStatus == 2) {
     maritalStatusString = "married";
@@ -90,34 +94,40 @@ void FederalTax::getData() {
     cout << "Your combine salary is " << marriedIncome << endl;
     cout << "The number of children under 14 you have is " << childrenUnder14 << endl;
     cout << "The percentage of your salary you want to contribute to your pension fund is "<< pensionPercentage << "% " << endl;
+    taxableIncome = marriedIncome;
  }
 }
 
-double FederalTax::taxAmount(int maritalStatus, double grossSalary, double marriedIncome) {
+double FederalTax::taxAmount(int &maritalStatus, double &grossSalary, double &marriedIncome, double &pensionAmount, double &taxableIncome) {
+
   double taxOwed = 0;
   int standardExemption = 0; 
-  double taxableIncome = 0;
+  cout << "The gross salary is: " << grossSalary << endl;
+  cout << "The married income is: " << marriedIncome << endl;
 
   if (maritalStatus == 1) {
     standardExemption = 4000;
-    double taxableIncome = grossSalary;
+    double personalExemption = 1500;
+    taxableIncome = (standardExemption + pensionAmount + 1500);
   }
   else if (maritalStatus == 2) {
     standardExemption = 7000;
-    double taxableIncome = marriedIncome;
+    taxableIncome = marriedIncome;
   }
-
+  cout << "The standard exemption is: " << standardExemption << endl;
+  cout << "The taxable income is: " << taxableIncome << endl;
+  
   if (taxableIncome >= 0 && taxableIncome <= 15000) {
     taxOwed = taxableIncome * 0.15;
   }
   else if (taxableIncome >= 15001 && taxableIncome <= 40000) {
-    taxOwed = 2250 + (taxableIncome - 15000) * 0.25;
+    taxOwed = 2250 + ((taxableIncome - 15000) * 0.25);
   }
   else if (taxableIncome > 40000) {
-    taxOwed = 8460 + (taxableIncome - 40000) * 0.35;
+    taxOwed = 8460 + ((taxableIncome - 40000) * 0.35);
   }
 
-  cout << "The tax owed is: ";
-
+  cout << "The tax owed is: " << taxOwed << endl;
+  
   return taxOwed;
 }
