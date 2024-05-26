@@ -3,8 +3,7 @@
 import os
 import openai
 
-openai.organization = "org-8AYzP0L8TQvVDRmJTaXlxlOM"
-openai.api_key = os.getenv("sk-proj-UFZkhSgtLXyohCt27JdJT3BlbkFJgN8MIDK17pZ29kDarj8g")
+
 openai.Model.list()
 
 def chat_with_gpt(prompt): 
