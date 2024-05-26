@@ -71,7 +71,7 @@ void FederalTax::getData(int &maritalStatus, double &grossSalary, double &marrie
     cout << "Your gross salary is " << grossSalary << endl;
     cout << "The number of children under 14 you have is " << childrenUnder14 << endl;
     cout << "The percentage of your salary you want to contribute to your pension fund is "<< pensionPercentage << "% " << endl;
-    taxableIncome = grossSalary - (4000 + (1500 * childrenUnder14) + (pensionPercentage/100 * grossSalary))
+    taxableIncome = grossSalary - (4000 + (1500 * childrenUnder14) + (pensionPercentage/100 * grossSalary));
   }
   else if (maritalStatus == 2) {
     maritalStatusString = "married";
