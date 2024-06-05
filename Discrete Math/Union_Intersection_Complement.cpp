@@ -2,31 +2,31 @@
     This program finds the union (called merger for error purposes), intersection, and 
     complement of two sets with the size of n given by the user.
 */
+// The merger function will merge the two sets
+
 
 using namespace std;
 #include <iostream>
 
 class Set {
     public:
-        int merger(int[], int[]);
-        int intersection(int[], int[]);
-        int complement(int[], int[]);
+        int set1size, set2size = 0; 
+        int set1[100], set2[100];
+        void merger();
+        void intersection();
+        void complement();
         void setCreator(); 
 };
 
 int main() {
-    cout << "Testing" << endl; 
     Set set;
-
-
     set.setCreator();
-    set.merger(0, 0);
+    set.merger();
     return 0;
 }
-// The setCreator function will create the two sets with the size of n given by the user
+
 void Set::setCreator() {
-   int set1size, set2size = 0; 
-   int set1[set1size], set2[set2size];
+    // The setCreator function will create the two sets with the size of n given by the user
 
    cout << "Enter the size of first set : " << endl;
    cin >> set1size;
@@ -55,22 +55,53 @@ void Set::setCreator() {
    }
 }
 
-// The merger function will merge the two sets
-int  Set::merger(int set1[], int set2[]) {
-    int set1size, set2size = 0;
-    int mergeSet[set1size + set2size];
+void Set::merger() {
+    // Create a new set to store the merged set
+    int mergedSet[set1size + set2size];
+    int mergedSize = 0; 
 
-    for(int i = 0; i < set1size; i++) {
-        mergeSet[i] = set1[i];
+    // Merging the two sets
+    for (int i = 0; i < set1size; i++) {
+        mergedSet[mergedSize++] = set1[i];
     }
-    /*
-    for(int i = set1size; i < (set1size + set2size); i++) {
-        mergeSet[set1size + i] = set2[i];
-    }
-    */
 
-    cout << "The merged set is : ";
-    for(int i = 0; i < (set1size + set2size); i++) {
-        cout << mergeSet[i] << " ";
+    for (int i = 0; i < set2size; i++) {
+        bool found = false; 
+        for(int j = 0; j < set1size; j++) {
+            if(set2[i] == set1[j]) {
+                found = true;
+                break;
+            }
+        }
+        if(!found) {
+            mergedSet[mergedSize++] = set2[i];
+        }
+    }
+
+    // Outputting the merged set
+    cout << "The union of the two sets is: " << endl;
+    for (int i = 0; i < mergedSize; i++) {
+        cout << mergedSet[i] << " ";
+    }
+}
+
+void Set::intersection() {
+    // Create a new set to store the intersection set
+    int intersectionSet[set1size + set2size];
+    int intersectionSize = 0; 
+
+    // Finding the intersection of the two sets
+    for (int i = 0; i < set1size; i++) {
+        for (int j = 0; j < set2size; j++) {
+            if(set1[i] == set2[j]) {
+                intersectionSet[intersectionSize++] = set1[i];
+            }
+        }
+    }
+
+    // Outputting the intersection set
+    cout << "The intersection of the two sets is: " << endl;
+    for (int i = 0; i < intersectionSize; i++) {
+        cout << intersectionSet[i] << " ";
     }
 }
