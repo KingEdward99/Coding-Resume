@@ -33,7 +33,6 @@ class Circle {
         double radius;
 };
 
-
 int main() {
     //Creating the two circles
     Circle firstCircle(5);
