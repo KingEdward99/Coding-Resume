@@ -51,11 +51,35 @@ class queueADT {
         //Function to remove the first element of the queue
         //Precondition: The queue exists and is not empty
         //Postcondition: The queue is changed and the first element is removed from the queue
+
+
 };
 
-int main () {
+void customerProblem();
 
+int main () {
+    int userChoice;
     cout << "Welcome to the Housing Portal" << endl;
+    cout << "If you are customer press 1, if you are a fixer press 2" << endl;
+    cin >> userChoice;
+    
+    if(userChoice == 1) {
+        customerProblem();
+    }
+    
     return 0;
 }
 
+void customerProblem() {
+    int areaProblem; //This is the area of the problem (e.g. kitchen, bathroom, living room)
+    string detailedProblem; //This is the detailed problem the customer is facing
+    cout << "Please enter the area of the problem" << endl;
+    cout << " 1. Kitchen\n 2. Bathroom\n 3. Bedroom\n 4. Living Room " << endl;
+    cin >> areaProblem;
+
+    cout << "What seems to be the problem?" << endl;
+    cin >> detailedProblem;
+
+    cout << "Thank You for your submission, a fixer will be with you shortly" << endl;
+
+}
