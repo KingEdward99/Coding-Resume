@@ -1,0 +1,1 @@
+//This is to simalute the investment in cryptocurrency such as Bitcoin, Ethereum, and Litecoin
