@@ -105,3 +105,4 @@ void Set::intersection() {
         cout << intersectionSet[i] << " ";
     }
 }
+
