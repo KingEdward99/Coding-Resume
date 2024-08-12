@@ -171,85 +171,97 @@ class linkedListIterator {
 
 //Functions for our program
 class nodeType {
-    public:
+    public: 
         string info; // store the first name
         nodeType *link; // pointer to the next node
-    
-};
+
+};     
 
 class StudentRecord {
+    private:
+        nodeType *first, *last; // pointers to the first and last nodes
     public:
-        void createRecords(); //initialize the records
+        StudentRecord () {
+            first = NULL;
+            last = NULL;
+        }
+        void createRecords(string& name); //initialize the records
         void transversingRecords(); // transversing the records
         void addRecord(); // add a record
-       void deleteRecord(); // delete a recor
-       void printRecords(); // print the records
+        void deleteRecord(); // delete a record
+        void printRecords(); // print the records
+        bool searchRecord(); // search for a record
 };
 
 int main () {
     //Creating a Data Structures and Algorithms (DSA) object
-    StudentRecord DSA;
+    StudentRecord Students; // create a student record object
+    string name; 
 
-    DSA.createRecords();
-    DSA.printRecords();
+    cout << "Enter the name of the student: " << endl;
+    cout << "Enter 'done' when you are finished entering names" << endl;
+    cin >> name;
 
+    while(name != "done") {
+        Students.createRecords(name);
+        cin >> name;
+    }
+    cout << endl;
+    cout << "The student names are: " << endl;
+    Students.printRecords();
+    //Students.deleteRecord();
+  
+}
 
-    //Creating a linked list
-    nodeType *first, *last, *newNode; 
-    int num; 
+void StudentRecord::createRecords(string& name) { 
+    nodeType *current; // pointer to create a new node
+    nodeType *trailCurrent; // pointer to trail the current node
+    nodeType *newNode; // pointer to create a new node
+    
 
-    //Declare the first and last pointers null
-    first = NULL;
-    last = NULL;
+    bool found; // boolean to check if the name is found
 
-    //Reading and storing the numbers for our list 
-    cin >> num;
-    newNode = new nodeType;
-    newNode->info = num;
-    newNode->link = NULL;
+    newNode = new nodeType; // create a new node
+    newNode -> info = name; // set the info of the new node
+    newNode -> link = NULL; // set the link of the new node to NULL
 
-    if (first == NULL) {
+    if(first == NULL) {
         first = newNode;
         last = newNode;
     } else {
-        last->link = newNode;
-        last = newNode;
-    }
-}
+        current = first; 
+        found = false; 
 
-void StudentRecord::createRecords() { 
-    cout << " Add the first name of the students to the record system " << endl;
-    cout << " Enter Done when you are finished " << endl;
-    nodeType *first, *last, *newNode;
-    string firstName;
-    cin >> firstName ;
-    first = NULL; 
-    while(firstName !=  "Done") {
-        newNode = new nodeType;
-        newNode->info = firstName;
-        newNode->link = NULL;
-        if (first == NULL) {
-            first = newNode;
-            last = newNode;
-        } else {
-            last->link = newNode;
-            last = newNode;
+        while (current != NULL && !found) {
+            if (current->info >= name) {
+                found = true;
+            } else {
+                trailCurrent = current;
+                current = current->link;
+            }
         }
-        cin >> firstName;
+        
+        if(current == first) {
+            newNode->link = first;
+            first = newNode;
+        } 
+        else {
+            trailCurrent->link = newNode;
+            newNode->link = current;
+            if(current == NULL) {
+                last = newNode;
+            }
+        }
     }
-
-    cout << "The records have been created" << endl;
-
 }
 
 void StudentRecord::printRecords() {
-    nodeType *current; // pointer to traverse the list
-    nodeType *first, *last;
-    current = first;  // set current to point to the first node
-    while (current != NULL) {
+    nodeType *current = first; // pointer to traverse the list
+    while(current != NULL) {
         cout << current->info << " ";
         current = current->link;
     }
+    cout << endl; 
 }
 
 void StudentRecord::transversingRecords() {
@@ -309,6 +321,37 @@ void StudentRecord::deleteRecord() {
     }
 }
 
+bool StudentRecord::searchRecord() {
+    nodeType *current; // pointer to traverse the list
+    nodeType *first, *last;
+    bool found; 
+    string name; 
+    cout << "Enter the name you want to search for: " << endl;
+    cin >> name;
+    if (first == NULL) {
+        cout << "Cannot search an empty list" << endl;
+    }
+    else 
+    {
+        current = first;
+        found = false;
+
+        while(current  != NULL && !found) {
+            if (current->info == name) {
+                found = true;
+            } else {
+                current = current->link;
+            }
+        }
+        if (found) {
+            cout << "The name is in the list" << endl;
+        } else {
+            cout << "The name is not in the list" << endl;
+        }
+    }
+    return found;
+}
+
 void addRecord() {
     nodeType *head, *current, *p, *q, *newNode;  // pointer to the first node
     string firstName; 
@@ -327,4 +370,3 @@ void addRecord() {
 void deleteRecord() {
 
 }
-
