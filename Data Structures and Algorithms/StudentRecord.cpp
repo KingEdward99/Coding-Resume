@@ -10,6 +10,7 @@
     The program will use linked lists to store the student information
 */
 #include <iostream>
+#include <string>
 using namespace std;
 
 /*
@@ -194,23 +195,56 @@ class StudentRecord {
 };
 
 int main () {
-    //Creating a Data Structures and Algorithms (DSA) object
+
     StudentRecord Students; // create a student record object
-    string name; 
+    string name;
+    int choice = 0;
+    //Introducing different program options 
+    cout << "Welcome to the Student Record Program" << endl;
+    cout << "Please select an option from the following: " << endl;
+    cout << "1. Add a student record" << endl;
+    cout << "2. Delete a student record" << endl;
+    cout << "3. Search for a student record" << endl;
+    cout << "4. Print all student records" << endl;
+    cout << "5. Exit the program" << endl;
+    cin >> choice; // get the user's choice
 
-    cout << "Enter the name of the student: " << endl;
-    cout << "Enter 'done' when you are finished entering names" << endl;
-    cin >> name;
+    while (choice != 5) {
+        if (choice == 1)
+        {
+            cout << "Enter the name of the student: " << endl;
+            cout << "Enter 'done' when you are finished entering names" << endl;
+            cin >> name;
 
-    while(name != "done") {
-        Students.createRecords(name);
-        cin >> name;
+            while(name != "done") {
+                Students.createRecords(name);
+                cin >> name;
+            }
+
+            cout << endl;
+            cout << "The student names are: " << endl;
+            Students.printRecords();
+        }
+        else if (choice == 2)
+        {
+            Students.deleteRecord();
+        }
+        else if (choice == 3)
+        {
+            Students.searchRecord();
+        }
+        else if (choice == 4)
+        {
+            Students.printRecords();
+        }
+        else if (choice == 5)
+        {
+            cout << "Exiting the program" << endl;
+        }
+    cout << "What else do you want to do ?" << endl;
+    cin >> choice;
     }
-    cout << endl;
-    cout << "The student names are: " << endl;
-    Students.printRecords();
-    //Students.deleteRecord();
-  
+    
 }
 
 void StudentRecord::createRecords(string& name) { 
@@ -350,23 +384,4 @@ bool StudentRecord::searchRecord() {
         }
     }
     return found;
-}
-
-void addRecord() {
-    nodeType *head, *current, *p, *q, *newNode;  // pointer to the first node
-    string firstName; 
-    current = head; 
-    cout << "What name do you want to enter? " << endl;
-    cin >> firstName;
-    while(current != NULL) {
-        current = current->link;
-        newNode = new nodeType;
-        newNode->info = firstName;
-        newNode->link = p -> link;
-        p -> link = newNode;
-    }
-}
-
-void deleteRecord() {
-
 }
