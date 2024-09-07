@@ -1,0 +1,10 @@
+<!-- This displays links -->
+<!DOCTYPE html>
+<html lang = en>
+<head>
+    <meta charset = "UTF-8">
+    <title> Link  </title>
+    <body>
+        <a href = https;//google.com> Google </a>
+    </body>
+</html>

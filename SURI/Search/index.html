@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Search</title>
+        <link rel = "stylesheet" href = "index.css">
+        <!-- 
+            .Search { 
+                position: absolute;
+                top: 0;
+                right: 0; 
+            }
+        -->
+        <style>
+            .Search {
+                position: absolute;
+                top: 0;
+                right: 10px;
+            }
+
+            .Google {
+                width: max-content;
+                display: flex;
+                align-items: center;
+                padding: 5%;
+                border-radius: 28px;
+                background: #f1f1f1;
+                min-height: 400px;
+                margin: 0 auto;
+            }
+        </style>
+    </head>
+    <body class = "Google">
+        <form action="https://www.google.com/search">
+            <input class = "Search Input" type="text" name="q">
+            <input type="submit" value="Google Search">
+        </form>
+    </body>
+
+    <p class = "Search">
+        <a href="Image.html">Image Search</a>
+        <a href = "AdvSearch.html">Advanced Search</a>
+    </p>
+</html>
