@@ -55,9 +55,8 @@
 
         //The final amount calculated
         finalMoney = principalAmount*(1 + Math.pow((interestRate/compoundInterest),exponentialRate));
-        System.out.println("Your final amount is: " + finalMoney);
+        System.out.println("Your final amount is: $" + finalMoney);
 
         input.close();
     }
-
 }
