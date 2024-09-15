@@ -24,6 +24,7 @@
         double interestRate = userRate/100; 
         int compoundInterest = 0;
         int time = 0; 
+        int exponentialRate = time * compoundInterest; 
 
         //Necessary input programs 
         Scanner input = new Scanner(System.in); 
@@ -51,6 +52,10 @@
         System.out.println("The amount of times per year the interest is applied is: " + compoundInterest);
 
         System.out.println("The amount of years the money will be compounded is " + time + " years");
+
+        //The final amount calculated
+        finalMoney = principalAmount*(1 + Math.pow((interestRate/compoundInterest),exponentialRate));
+        System.out.println("Your final amount is: " + finalMoney);
 
     }
 
