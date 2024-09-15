@@ -30,11 +30,11 @@
 
         System.out.println("Welcome to the savings program. You can predict how much money you will make over time if you enter some money in your saivngs account.");
 
-        
+        //Asking the user necessary information
         System.out.println("Enter the principal amount you want to deposit ");
-        finalMoney = input.nextDouble(); 
+        principalAmount = input.nextDouble(); 
 
-        System.out.println(" Enter the interest rate: ");
+        System.out.println("Enter the interest rate: ");
         userRate = input.nextDouble(); 
 
         System.out.println("Enter the number of times per year that the interest is applied"); 
@@ -43,8 +43,15 @@
         System.out.println("Enter the amount of years the money will be compounded");
         time = input.nextInt(); 
 
-        
-        
+        //Verifying the user information 
+        System.out.println("Your principal amount is: $" + principalAmount);
+
+        System.out.println("Your interest rate is " + userRate + "%");
+
+        System.out.println("The amount of times per year the interest is applied is: " + compoundInterest);
+
+        System.out.println("The amount of years the money will be compounded is " + time + " years");
+
     }
 
  }
