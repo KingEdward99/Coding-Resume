@@ -1,8 +1,6 @@
 /*
-    Name: Eddy Koundjou Yem 
-
+    Name: Eddy Koundjou Yem
     This program reads in a file and then converts the lowercase letters to uppercase letters 
-    
 */
 
 #include <unistd.h>
