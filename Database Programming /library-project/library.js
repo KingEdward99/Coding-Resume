@@ -6,7 +6,7 @@ const connection = mysql.createConnection({
     host: 'localhost',      // Your MySQL host (e.g., localhost)
     user: 'root',   // Your MySQL username
     password: '--',  // Your MySQL password
-    database: 'FavoriteBooks' // Your database name
+    database: 'student_books' // Your database name
 });
 
 // Connect to the database
@@ -19,7 +19,7 @@ connection.connect((err) => {
 });
 
 // Example query to fetch data
-connection.query('SELECT * FROM BOOKS', (err, results) => {
+connection.query('SELECT * FROM Library_Test', (err, results) => {
     if (err) {
         console.error('Error executing query:', err);
         return;
