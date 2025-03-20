@@ -12,7 +12,7 @@ int factorialCalculate(int userNumber); // calculates the factorial
 
 int main()
 {
-    int userNumber; 
+    int userNumber = 0; 
     cout << " Enter a number and I will calculate its factorial" << endl; 
     cin >> userNumber; 
     cout << "You entered " << userNumber << endl; 
@@ -25,13 +25,13 @@ int main()
 //factorial algorithm 
 int factorialCalculate(int userNumber)
 {
-    int factorialNumber;
+    int factorialNumber = 1;
     if (userNumber == 0)
         return 1;
     else
-        for(int i = userNumber; i >= 1; i-- )
+        for(int i = 1; i <= userNumber; i++ )
         {
-            factorialNumber = i * factorialNumber; 
+            factorialNumber  *= i; 
         };
     return factorialNumber; 
 }
