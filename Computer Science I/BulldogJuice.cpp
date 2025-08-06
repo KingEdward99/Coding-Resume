@@ -82,14 +82,47 @@ double appleJuicePrice, double orangeJuicePrice){
     return totalCost; 
 } 
 
-void BulldogJuice::customerPaying(double& totalCost){
+void BulldogJuice::customerPaying(double& totalCost) {
     double payment = 0.0;
-    
-    cout << "How much will you be paying?" << endl;
-    cin >> payment;
 
-    double change = payment - totalCost; 
+    while (true) {
+        cout << "Enter payment amount: $";
+        cin  >> payment;
 
-    cout << "You paid $" << payment << endl;
-    cout << "Your change is $" << change << endl;
+        if (payment >= totalCost) {
+            double change = payment - totalCost;
+            cout << fixed << setprecision(2);
+            if (change > 0.005)
+                cout << "Your change is: $" << change << "\n";
+            else
+                cout << "Exact payment received. Thank you!\n";
+            break;
+        }
+
+        cout << fixed << setprecision(2);
+        cout << "Insufficient payment. You still owe $"
+             << (totalCost - payment) << ".\n";
+
+        cout << "Options:\n"
+             << "  1) Add more to current payment\n"
+             << "  2) Re-enter a completely new payment amount\n"
+             << "Select 1 or 2: ";
+        int choice;
+        cin  >> choice;
+
+        if (choice == 1) {
+            double more = 0.0;
+            cout << "Enter additional amount: $";
+            cin  >> more;
+            payment += more;
+            // loop continues to check if payment >= totalCost
+        }
+        else if (choice == 2) {
+            // restart the loop to enter fresh payment
+            continue;
+        }
+        else {
+            cout << "Invalid option. Let's try entering your payment again.\n";
+        }
+    }
 }
