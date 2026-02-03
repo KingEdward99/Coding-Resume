@@ -35,12 +35,67 @@ def choice(first_position, second_position, third_position):
         print(third_position)
     else:
         print("Invalid option")
+
+#User finding the quantity / cardinality of each position
+def size(first_position, second_position, third_position):
+    print("Which position do you want to see the quantity of?")
+    print("Select 1 for guards")
+    print("Select 2 for forwards")
+    print("Select 3 for centers")
+    user_size_choice = int(input()) 
+
+    if user_size_choice == 1:
+        print("The quantity of the point guards are: " ,len(first_position))
+    elif user_size_choice == 2:
+        print("The quantity of the forwards are: ", len(second_position))
+    elif user_size_choice == 3:
+        print("The quantity of the centers are: ", len(third_position))
+    else:
+        print("Invalid choice")
+
+#Explores different duo / combinatrics of the three positions
+def duos(first_position, second_position, third_position):
+    print("Which two positions do you want to see in a duo")
+    print("Select 1 for guards and forwards")
+    print("Select 2 for guards and centers")
+    print("Select 3 for forwards and centers")
+    user_size_choice = int(input())
+
+    if user_size_choice == 1:
+        for primary in first_position:
+            for secondary in second_position:
+                print(primary + " & " + secondary)
+    if user_size_choice == 2:
+        for primary in first_position:
+            for tertiary in third_position:
+                print(primary + " & " + tertiary)
+    if user_size_choice == 3:
+        for secondary in second_position:
+            for tertiary in third_position:
+                print(secondary + " & " + tertiary)
+
     
 #Rosters set divided into guards, forwards and centers
 guards = ["Gabe Vincent", "Luka Doncic", "Bronny James"]
 forwards = ["Lebron James", "Jarred Vanderbilt", "Dalton Knecht"]
 centers = ["Jaxson Hayes", "Deandre Ayton"]
 
-#choice(guards, forwards, centers)
-union(guards, forwards, centers)
+print("Welcome to the Lakers positions data: \n")
+print("We have a list of various positions, potential combinations, quantity at each position, and duo explorations\n")
+print("Select 1 for a list of players at certain position\n")
+print("Select 2 for combinations of different positions\n")
+print("Select 3 for the quantity of players at each position\n")
+print("Select 4 for potential duo combinations\n")
 
+menu_choice = int(input())
+
+if menu_choice == 1:
+    choice(guards, forwards, centers)
+elif menu_choice == 2:
+    union(guards, forwards, centers)
+elif menu_choice == 3:
+    size(guards, forwards, centers)
+elif menu_choice == 4:
+    duos(guards, forwards, centers)
+else:
+    print("Invalid option")
