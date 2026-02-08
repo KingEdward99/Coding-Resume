@@ -4,13 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-function ITHelpDesk() {
-  return <h1 className = "greeting"> Welcome to the IT Help Desk </h1>;
+function StudentBusinessIntro() {
+  return <h1 className = "greeting"> Welcome to the Student Business </h1>
 }
+const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ITHelpDesk />
+    <StudentBusinessIntro />
   </React.StrictMode>
 );
 
