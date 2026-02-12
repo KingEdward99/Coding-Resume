@@ -22,9 +22,6 @@ def bank_withdraw(user_balance):
         print("You now have: ", new_balance)
         return new_balance
 
-    
-
-
 #depositing money
 def bank_deposit(user_balance):
     print("How much money do you want to deposit?")
@@ -40,14 +37,36 @@ def bank_display_amount(user_balance):
     print("Your current balance is: ", user_balance)
 
 #Menu selection
-def menu_selection(bank_withdraw, bank_deposit, bank_display_amount):
-    print("If you want to see your current balance press 1 \n")
-    print("If you want to deposit money, press 2\n")
-    print("If you want to withdraw money, press 3 \n")
+def menu_selection(user_balance):
+   
+
+    menu_selection = -1
+    while menu_selection != 0:
+         print("If you want to see your current balance press 1 \n")
+         print("If you want to deposit money, press 2\n")
+         print("If you want to withdraw money, press 3 \n")
+         print("If you want to exit the program, press 0")
+         
+         menu_selection = int(input("What do you want to see?"))
+         
+         if menu_selection == 1:
+            bank_display_amount(user_balance)
+         elif menu_selection == 2:
+            user_balance = bank_deposit(user_balance)
+         elif menu_selection == 3:
+             user_balance = bank_withdraw(user_balance)
+         elif menu_selection == 0:
+            print("Thank you for using Eddy's Bank")
+         else:
+             print("Wrong input")
+    
+    return user_balance
 
 #default balance for users
 user_balance = 1000
 
 #Calling functions
 bank_announcement()
-user_balance = bank_withdraw(user_balance)
+
+#Calling the menu
+user_balance = menu_selection(user_balance)
