@@ -9,11 +9,20 @@ USE CMRC;
 -- Double checking my table does not exist 
 SHOW TABLES; 
 
--- Creating the table that tracks resients Name, amount owed, and room number 
+-- Creating the table that tracks residents Name, amount owed, and room number 
 CREATE TABLE Residents (
 	ResidentName varchar(255),
     AmountOWed int,
     RoomNumer varchar(5)
+);
+
+-- Creating the room schemas
+CREATE TABLE APT (
+	UnitNumber VARCHAR(4),
+    Bedrooms INT,
+    Bathrooms INT, 
+    Rent_Amount DECIMAL,
+    RoomStatus VARCHAR(20)
 );
 
 -- Adding residents to the table 
