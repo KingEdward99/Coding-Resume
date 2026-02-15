@@ -1,3 +1,5 @@
+//Coding and Learning about ethereum
+
 const Web3 = require('web3')
 const rpcURL = 'https://app.infura.io/key/2585defde39a4d0e93c4e95bdfe8ea0c' // Your RPC URL goes here
 const web3 = new Web3(rpcURL)

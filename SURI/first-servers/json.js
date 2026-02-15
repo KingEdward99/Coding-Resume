@@ -1,3 +1,4 @@
+//Creating JSON responses
 const http = require("http");
 
 const host = 'localhost';
