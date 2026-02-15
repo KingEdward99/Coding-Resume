@@ -118,5 +118,6 @@
     "vector": "cpp",
     "algorithm": "cpp"
   },
-  "java.compile.nullAnalysis.mode": "automatic"
+  "java.compile.nullAnalysis.mode": "automatic",
+  "python.analysis.autoImportCompletions": true
 }
