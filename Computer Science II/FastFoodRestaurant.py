@@ -31,9 +31,28 @@ def orderProcessing(wings_quantity, cornbread, drink_quantity):
     cornbread_total_price = 2.00 * cornbread
     drink_total_price = 1.00 * drink_quantity
 
+#Collecting user payment 
+def paymentcollection():
+    total_cost = 5.0
+    user_payment = 0.0
+
+    while user_payment < total_cost:
+        print("Your total cost is $: ", total_cost)
+        user_payment = float(input("How much are you willing to pay?"))
+
+        if user_payment < total_cost:
+            print("Insufficent funds")
+        else:
+            user_change = user_payment - total_cost
+            print("Your change is $", user_change)
+
 #Presenting the menu
-menu()
+#menu()
 
 #Collecting the user order
-userOrder()
+#userOrder()
+
+paymentcollection()
+
+
 
