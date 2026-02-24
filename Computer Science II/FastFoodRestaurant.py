@@ -16,24 +16,19 @@ def foodprice():
 
 #Collecting the user's order
 def userOrder():
+    #Giving the user options on what they want to order
     print("If you want some wings press 1")
-    userOrder = input("What do you want to order?")
+    print("If you want some cornbread, press 2")
+    print("If you want some drinks, press 3")
+    userOrder = int(input("What do you want to order?"))
 
+    #Initializing the food options
     wings_quantity = 0
     user_flavor = ""
+    cornbread = 0
+    drink_quantity = 0
 
-    #Order of orders
-    # User orders wings, orders quantity, orders flavors
-
-
-    wings_quantity = int(input("How many wings do you want?"))
-
-
-    #cornbread = int(input("How much cornbread do you want"))
-
-    #drink_flavor = input("Which drink do you want?")
-    #drink_quantity = input(int("How many drinks do you want?"))
-
+    #Going through the options
     if userOrder == 1:
         wings_quantity = int(input("How many wings do you want?"))
 
@@ -41,7 +36,7 @@ def userOrder():
         print("If you want Lemon Pepper, press 2")
         print("If you want Zeng, press 3")
 
-        wings_flavor = input("What flavor do you want?")
+        wings_flavor = int(input("What flavor do you want?"))
         
         if wings_flavor == 1:
             user_flavor = "barbecue"
@@ -51,12 +46,19 @@ def userOrder():
             user_flavor = "Zheng"
         else: 
             user_flavor = "Unknown Flavor"
+        
         print("Number of wings you ordered: ",wings_quantity )
         print("The flavor of the  wings: ", user_flavor)
+
+    elif userOrder == 2:
+         cornbread = int(input("How much cornbread do you want"))
+         print("You ordered", cornbread, "cornbread.")
+    elif userOrder == 3:
+        drink_quantity = int(input("How many drinks do you want?"))
+        drink_flavor = input("Which drink do you want?")
+        print("You ordered", drink_quantity, drink_flavor)
     else:
         print("Invalid selection")
-
-    #order verification
 
 
 def orderProcessing(wings_quantity, cornbread, drink_quantity):
