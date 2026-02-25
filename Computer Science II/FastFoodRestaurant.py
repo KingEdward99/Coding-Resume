@@ -59,16 +59,31 @@ def userOrder():
         print("You ordered", drink_quantity, drink_flavor)
     else:
         print("Invalid selection")
+    return wings_quantity, cornbread, drink_quantity
 
 
-def orderProcessing(wings_quantity, cornbread, drink_quantity):
+def orderProcessing(userOrder):
+    wings_quantity, cornbread, drink_quantity = userOrder()
+
     wings_total_price = 1.00 * wings_quantity
     cornbread_total_price = 2.00 * cornbread
     drink_total_price = 1.00 * drink_quantity
 
+    total_order = wings_total_price + cornbread_total_price + drink_total_price
+    
+    print("\n Order Summary:")
+    print("Wings total: $", wings_total_price)
+    print("Cornbread total: $", cornbread_total_price)
+    print("Drink total: $", drink_total_price)
+    print("Total order: $", total_order)
+
+    return total_order
+
+
+    
 #Collecting user payment 
 def paymentcollection():
-    total_cost = 5.0
+    total_cost = 0.0
     user_payment = 0.0
 
     while user_payment < total_cost:
@@ -85,9 +100,8 @@ def paymentcollection():
 menu()
 
 #Collecting the user order
-userOrder()
+#userOrder()
 
 #paymentcollection()
 
-
-
+orderProcessing(userOrder)
