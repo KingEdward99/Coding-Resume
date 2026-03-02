@@ -82,13 +82,3 @@ Each program is self‑contained. To run one:
 
 ## ⭐ Notes
 These assignments represent my early programming work and serve as a foundation for more advanced projects in later courses such as **Computer Science II**, **Data Structures**, and **Algorithms**.
-
----
-
-If you want, I can also create:
-
-- A **top‑level README** for your entire Coding Resume repo  
-- Individual READMEs for each program  
-- A more polished, portfolio‑style version with visuals or sample outputs  
-
-Would you like the README to include screenshots, sample runs, or code snippets?
