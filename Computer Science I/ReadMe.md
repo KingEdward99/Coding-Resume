@@ -11,9 +11,7 @@ This folder contains five foundational programs created as part of my **Computer
 A simple program that:
 - Prompts the user for the *length* and *width* of a rectangle  
 - Calculates the area using the formula:  
-  \[
-  \text{Area} = \text{length} \times \text{width}
-  \]
+  Area = length * width
 - Displays the result to the user  
 
 **Concepts demonstrated:** user input, variables, arithmetic operations, output formatting.
