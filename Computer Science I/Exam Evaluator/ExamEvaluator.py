@@ -3,25 +3,38 @@
 # Author Eddy Koundjou Yem
 
 #presenting options to the user
+from json import load
+
+#Reading the file and extracting the information 
+def load_grades(filename):
+    students = []
+    
+    with open(filename,"r") as Exam_scores:
+        for line in Exam_scores:
+            name, grade = line.split()
+            students.append(name, int(grade))
+    
+    return students
+
 def menu():
     print("Welcome to the Exam Evaluator.\n")
-    print("Press 1 to find the highest score \n")
-    print ("Press 2 to find the lowest score. \n")
+    print("Press 1 to find the student with the highest  \n")
+    print ("Press 2 to find the student with the lowest score. \n")
     print("Press 3 to find the average.\n")
 
     menu_selection = int(input("Pick a menu option. \n"))
     return menu_selection 
 
 #function that finds the highest score
-def highest_score(grades):
+def find_highest(students):
     #setting the highest_score to 0 to prepare the comparisons
-    highest_score = grades[0]
+    highest_student = students[0]
 
     #comparison algorithm for finding the highest
-    for score in grades:
-        if score > highest_score:
-            highest_score = score
-    return highest_score
+    for score in students:
+        if students[score] > highest_student:
+            highest_student = students
+    return highest_student
 
 #function that finds the lowest score
 def lowest_score(grades):
@@ -64,7 +77,12 @@ def selection(option, grades):
         print("Invalid option selected.")
 
 #set amount of grades
-grades = [80, 95, 62, 78, 83]
+#grades = [80, 95, 62, 78, 83]
 
-option = menu()
-selection(option, grades)
+#option = menu()
+#selection(option, grades)
+
+#calling the first changed function
+students = load_grades("Test1scores.txt")
+
+#Learning how to implement file reading in a program
