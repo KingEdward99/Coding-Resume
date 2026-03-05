@@ -14,7 +14,7 @@ def file_reading():
         for line in exam:
             line = line.strip() #removing the newlines
             name, score = line.split(",") #separating grades into names and grades
-            students.append(name.strip(), int(score.strip()))
+            students.append((name.strip(), int(score.strip())))
 
     return students
 
@@ -41,25 +41,16 @@ def find_highest(students):
     print("Student: ", highest_student[0])
 
 #function that finds the lowest score
-def lowest_score(grades):
+def find_lowest(students):
     #Setting the lowest_score to 0 to prepare the comparisons
-    lowest_score = grades[0]
+    lowest_student = students[0]
 
     #comparison algorithm for find the lowest
-    for score in grades:
-        if score < lowest_score:
-            lowest_score = score
-    return lowest_score
-
-def find_lowest(students):
-    lowest_score = students[0]
-
-    for score in students:
-        if students[score] < lowest_score:
-            lowest_score = students[score]
-    
-    return lowest_score
-            
+    for student in students:
+        if student[1] < lowest_student[1]:
+            lowest_student = student
+    print("The lowest score is: ", lowest_student[1])
+    print("Student: ", lowest_student[0])
 
 #function that finds the average
 def average_score(grades):
@@ -77,27 +68,15 @@ def average_score(grades):
     return average
 
 #function that selects the operations
-def selection(option, grades):
+def selection(option, students):
     if option == 1:
-        highest_grade = highest_score(grades)
-        print("The highest score is: ", highest_grade)
+        find_highest(students)
     elif option == 2:
-        lowest_grade = lowest_score(grades)
-        print("The lowest score is: ", lowest_grade)
-    elif option == 3:
-        average_grade = average_score(grades)
-        print("The average score is: ", average_grade)
-    else:
-        print("Invalid option selected.")
-
-#set amount of grades
-#grades = [80, 95, 62, 78, 83]
-
-#option = menu()
-#selection(option, grades)
+        find_lowest(students)
 
 #calling the first changed function
 students = file_reading()
 find_highest(students)
+find_lowest(students)
 
 #Learning how to implement file reading in a program
