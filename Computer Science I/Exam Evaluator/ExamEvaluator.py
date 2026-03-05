@@ -2,19 +2,22 @@
 # Created January 28, 2025
 # Author Eddy Koundjou Yem
 
-#presenting options to the user
-from json import load
-
 #Reading the file and extracting the information 
-def load_grades(filename):
+from gettext import find
+
+
+def file_reading():
     students = []
     
-    with open(filename,"r") as Exam_scores:
-        for line in Exam_scores:
-            name, grade = line.split()
-            students.append(name, int(grade))
-    
+    with open("Test1scores.txt","r") as exam:
+        #Reading in the exam scores
+        for line in exam:
+            line = line.strip() #removing the newlines
+            name, score = line.split(",") #separating grades into names and grades
+            students.append(name.strip(), int(score.strip()))
+
     return students
+
 
 def menu():
     print("Welcome to the Exam Evaluator.\n")
@@ -31,10 +34,11 @@ def find_highest(students):
     highest_student = students[0]
 
     #comparison algorithm for finding the highest
-    for score in students:
-        if students[score] > highest_student:
-            highest_student = students
-    return highest_student
+    for student in students:
+        if student[1] > highest_student[1]:
+            highest_student = student
+    print("The highest scores is: " ,highest_student[1])
+    print("Student: ", highest_student[0])
 
 #function that finds the lowest score
 def lowest_score(grades):
@@ -46,6 +50,16 @@ def lowest_score(grades):
         if score < lowest_score:
             lowest_score = score
     return lowest_score
+
+def find_lowest(students):
+    lowest_score = students[0]
+
+    for score in students:
+        if students[score] < lowest_score:
+            lowest_score = students[score]
+    
+    return lowest_score
+            
 
 #function that finds the average
 def average_score(grades):
@@ -83,6 +97,7 @@ def selection(option, grades):
 #selection(option, grades)
 
 #calling the first changed function
-students = load_grades("Test1scores.txt")
+students = file_reading()
+find_highest(students)
 
 #Learning how to implement file reading in a program
