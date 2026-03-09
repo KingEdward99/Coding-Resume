@@ -3,9 +3,10 @@
 # Author Eddy Koundjou Yem
 
 #Reading the file and extracting the information 
+from cgi import test
 from gettext import find
 
-
+#Collecting the student and their grades from the file
 def file_reading():
     students = []
     
@@ -13,7 +14,7 @@ def file_reading():
         #Reading in the exam scores
         for line in exam:
             line = line.strip() #removing the newlines
-            name, score = line.split(",") #separating grades into names and grades
+            name, score = line.split(",") #separating the names and grades into tuples
             students.append((name.strip(), int(score.strip())))
 
     return students
@@ -37,6 +38,7 @@ def find_highest(students):
     for student in students:
         if student[1] > highest_student[1]:
             highest_student = student
+    #Printing the student and the highest score
     print("The highest scores is: " ,highest_student[1])
     print("Student: ", highest_student[0])
 
@@ -49,23 +51,23 @@ def find_lowest(students):
     for student in students:
         if student[1] < lowest_student[1]:
             lowest_student = student
+    #Printing the student and the lowest score
     print("The lowest score is: ", lowest_student[1])
     print("Student: ", lowest_student[0])
 
 #function that finds the average
-def average_score(grades):
+def find_average(students):
     #algorithm to finding the average
+    total_exam_score = 0
+    size = len(students)
 
-    size = len(grades)
+    for name, score in students:
+        total_exam_score += score
 
-    total_sum = 0
+    average_exam_score = total_exam_score / size
 
-    for score in grades:
-        total_sum += score
-    
-    average = total_sum / size
-
-    return average
+    print("The average exam scores was: ", average_exam_score)
+            
 
 #function that selects the operations
 def selection(option, students):
@@ -73,10 +75,11 @@ def selection(option, students):
         find_highest(students)
     elif option == 2:
         find_lowest(students)
+    elif option == 3:
+        find_average(students)
 
-#calling the first changed function
+#calling the functions
 students = file_reading()
 find_highest(students)
 find_lowest(students)
-
-#Learning how to implement file reading in a program
+find_average(students)
