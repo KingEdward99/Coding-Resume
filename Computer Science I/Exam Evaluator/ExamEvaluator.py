@@ -19,13 +19,14 @@ def file_reading():
 
     return students
 
-
+#Showing the professor different options
 def menu():
     print("Welcome to the Exam Evaluator.\n")
     print("Press 1 to find the student with the highest  \n")
     print ("Press 2 to find the student with the lowest score. \n")
     print("Press 3 to find the average.\n")
 
+    #Collecting the user's menu options
     menu_selection = int(input("Pick a menu option. \n"))
     return menu_selection 
 
@@ -38,6 +39,7 @@ def find_highest(students):
     for student in students:
         if student[1] > highest_student[1]:
             highest_student = student
+    
     #Printing the student and the highest score
     print("The highest scores is: " ,highest_student[1])
     print("Student: ", highest_student[0])
@@ -61,14 +63,13 @@ def find_average(students):
     total_exam_score = 0
     size = len(students)
 
-    for name, score in students:
+    for score in students:
         total_exam_score += score
 
     average_exam_score = total_exam_score / size
 
     print("The average exam scores was: ", average_exam_score)
             
-
 #function that selects the operations
 def selection(option, students):
     if option == 1:
@@ -79,7 +80,6 @@ def selection(option, students):
         find_average(students)
 
 #calling the functions
+menu_selection = menu()
 students = file_reading()
-find_highest(students)
-find_lowest(students)
-find_average(students)
+selection(menu_selection,students)
