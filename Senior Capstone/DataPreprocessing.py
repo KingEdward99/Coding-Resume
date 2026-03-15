@@ -1,6 +1,4 @@
-import pandas as pd
-import csv
-
+import pandas as pd # type: ignore
 
 def preprocess_data():
     df = pd.read_csv('metric_log.xlsx')
