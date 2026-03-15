@@ -63,9 +63,11 @@ def find_average(students):
     total_exam_score = 0
     size = len(students)
 
-    for score in students:
+    #Going throught the tuple and adding all the scores up
+    for name,score in students:
         total_exam_score += score
 
+    #dividing by number of students
     average_exam_score = total_exam_score / size
 
     print("The average exam scores was: ", average_exam_score)
