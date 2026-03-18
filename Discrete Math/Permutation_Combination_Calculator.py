@@ -49,23 +49,22 @@ def combination():
 #Permutation Calculator
 #n!/(n-r)!
 def permutation():
-    #Permutation function
-    #Top Half
-    n = int(input("Enter a number"))
-    top_factorial = 1
+    #Permutation function: P(n,r) = n! / (n-r)!
+    n = int(input("Enter n (total items): "))
+    r = int(input("Enter r (items to arrange): "))
 
+    #Calculate n!
+    top_factorial = 1
     for i in range(1, n+1):
         top_factorial *= i
 
-    print("The factorial of ", n, " is ", top_factorial)
+    #Calculate (n - r)!
+    bottom_factorial = 1
+    for i in range(1, (n-r)+1):
+        bottom_factorial *= i
 
-    #Bottom Factorial
-    r = int(input("Enter a number"))
-    bot_factorial = n-r
-
-    for i in range(1,i+1):
-        bot_factorial *= i
-
-    permutation = top_factorial/(bot_factorial)
+    perm = top_factorial / bottom_factorial
     
-    print("Permutation is: ",permutation)    
+    print(f"P({n}, {r}) = {perm}")  
+
+permutation()
