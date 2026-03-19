@@ -67,4 +67,20 @@ def permutation():
     
     print(f"P({n}, {r}) = {perm}")  
 
-permutation()
+def menu():
+    print("Welcome to the permutation-combination calculator")
+
+    print("Remember in a permutation, order does matter")
+    print("In a combination, order does not matter")
+    print("Press 1 for combination")
+    print("Press 2 for permutation")
+
+    choice = int(input("Does your problem require a permutation or combination"))
+    return choice
+
+choice = menu()
+
+if choice == 1:
+    combination()
+else:
+    permutation()
