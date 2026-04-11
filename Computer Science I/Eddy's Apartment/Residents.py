@@ -33,6 +33,9 @@ def add_residents(apartments):
         room = input("Enter the room number: ")
 
         apartments[name] = room
+    
+    print("The residents and their apartments are: ")
+    print(apartments)
 
 #Removing residents from their apartment    
 def remove_residents(apartments):
@@ -49,6 +52,10 @@ def remove_residents(apartments):
             print(f"{name} has been removed.")
         else:
             print(f"{name} is not in the apartment")
+    
+    #Printing the current residents of the apartment
+    print(f"The residents in the apartment are: ")
+    print(apartments)
 
 #Searching for a resident to see where they say 
 def search_residents(apartments):
