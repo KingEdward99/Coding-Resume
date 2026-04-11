@@ -33,6 +33,7 @@ def add_residents(apartments):
         room = input("Enter the room number: ")
 
         apartments[name] = room
+        save_residents(apartments)
     
     print("The residents and their apartments are: ")
     print(apartments)
@@ -49,6 +50,7 @@ def remove_residents(apartments):
         #Checking to see if the user actually exists in the apartment
         if name in apartments: 
             apartments.pop(name)
+            save_residents(apartments) 
             print(f"{name} has been removed.")
         else:
             print(f"{name} is not in the apartment")
@@ -65,6 +67,12 @@ def search_residents(apartments):
     else:
         print(f"{name} is not in the apartment")
     print()
+
+#Making the changes permanent
+def save_residents(apartments):
+    with open("Residents.txt," "w") as apt:
+        for name,room in apartments.items():
+            apt.write(f"{name}, {room}")
 
 #Menu for the user
 def menu(apartments):
