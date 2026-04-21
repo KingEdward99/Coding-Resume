@@ -11,7 +11,7 @@
 */
 #include <iostream>
 using namespace std;
-
+//tax amount program to tell the user how much tax they owe
 class FederalTax {
   public:
     int maritalStatus;
@@ -34,7 +34,15 @@ int main() {
 
   return 0;   
 }
-
+/*
+  Collecting user's data
+  @param maritalStatus: user's marriage status
+  @param grossSalary: user's salary before tax
+  @param taxableIncome: amount of user's income that is taxable
+  @param pensionPercentage: percentage of income that goes to pension
+  @param childenunder14: amount of children under 14 that the user has
+  @return nothing
+*/
 void FederalTax::getData(int &maritalStatus, double &grossSalary, double &taxableIncome, double &pensionPercentage, int& childrenUnder14) {
   string maritalStatusString = "";
   double incomeFirstSpouse = 0;
@@ -80,7 +88,15 @@ void FederalTax::getData(int &maritalStatus, double &grossSalary, double &taxabl
     cout << "The percentage of your salary you want to contribute to your pension fund is "<< pensionPercentage << "% " << endl;
  }
 }
-
+/*
+  Calculating the amount of taxes owed 
+  @param maritalStatus: user's marriage status
+  @param grossSalary: user's salary before tax
+  @param taxableIncome: amount of user's income that is taxable
+  @param pensionPercentage: percentage of income that goes to pension
+  @param childenunder14: amount of children under 14 that the user has
+  @return taxOwed: how much taxes the user owes 
+*/
 double FederalTax::taxAmount(int &maritalStatus, double &grossSalary, double &taxableIncome, double &pensionPercentage, int& childrenUnder14) {
 
   double taxOwed = 0;
