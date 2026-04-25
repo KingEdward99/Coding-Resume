@@ -1,37 +1,62 @@
 """
-    A Scholarship to do list based on the following scholarships
-    MHEC
-    TMCF
-    UNCF
+   This program prvoides the necessary steps to apply to 
+   MHEC, TMCF, and UNCF scholarships
 
-    Also using classes and functions to make it work 
+   This program uses classes and functions to ensure that the
+   user can apply to them.
 """
+
+#Scholarship class with its functions
 class Scholarship:
-    Title = ""
-    Deadline = ""
-    Action = ""
-    Status = "opened"
+    #Initializing function
+    def __init__(self, title, deadline, status):
+        self.title = title
+        self.deadline = deadline
+        self.status = status
+        self.actions = []
 
-Scholarship = MHEC()
-
-MHEC.title = "MD SCholarship"
-MHEC.action = "Create MDCAPS Account"
-MHEC.deadline = "June 01, 2026"
-MHEC.status = "open"
-
-#Finds specific scholarship tasks
-def find_task(task_name):
-    search = Scholarship()
-    search.input = input("Enter the name of the task")
-
-    for i in Scholarship():
-        if i == search.input():
-            return i
+    #Adds the task to the scholarship list
+    def add_task(self, action):
+        self.actions.append(action)
+        print(f"{action} has been added.")
+    
+    #removing the tasks from the scholarship list
+    def remove_task(self, action):
+        if action in self.actions:
+            self.actions.remove(action)
+            print(f"{action} has been done. ")
         else:
-            print(f"Can't find {Scholarship}")
+            print(f"{action} is not in the list.")
+    
+    #Looking for a specific task in the list
+    def find_task(self):
+        #Asking the user for input and storing in a variable
+        search_action = input("Enter the name of the task.")
 
-#Switching the tasks from open to close
-def update_task(task_name):
-    Scholarship.Action = "close"
+        if search_action in self.actions:
+            print(f"{search_action} is in your opened tasks.")
+        else:
+            print(f"{search_action} is not in your opened tasks.")
+    
+    #Displaying the info for each scholarship
+    def display_info(self):
+        print(f"\n--{self.title}{self.status}---")
+        print(f"Deadline: {self.deadline}")
+        print(f"To Do: {self.actions}\n")
 
+#Creating a MHEC Scholarship object and adding tasks
+MHEC = Scholarship("MD Scholarship ", "June 01, 2026", "Open")
+MHEC.add_task("Fill out your FAFSA")
+MHEC.add_task("Create MDCAPS account")
+MHEC.display_info()
 
+#Creating a TMCF Scholarship object and adding tasks
+TMCF = Scholarship("Thurgood Marshall College Fund ", "May 23, 2026", "Open")
+TMCF.add_task("Create TMCF Account")
+TMCF.add_task("Create video essay")
+TMCF.display_info()
+
+#Creating a UNCF Scholarship object and adding tasks
+UNCF = Scholarship("United Negro College Fund ", "July 01, 2026", "Closed")
+UNCF.add_task("Ask Professors for a recommendation letter")
+UNCF.display_info()
