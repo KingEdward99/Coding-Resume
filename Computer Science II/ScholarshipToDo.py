@@ -14,6 +14,14 @@ class Scholarship:
         self.deadline = deadline
         self.status = status
         self.actions = []
+    
+    #Presenting the status of the scholarship
+    def __str__(self):
+        return (
+            f"\n--- {self.title} ({self.status}) ---"
+            f"\n--- Deadline: {self.deadline} --- "
+            f"\nTo Do: {self.actions}"
+        )
 
     #Adds the task to the scholarship list
     def add_task(self, action):
@@ -40,23 +48,21 @@ class Scholarship:
     
     #Displaying the info for each scholarship
     def display_info(self):
-        print(f"\n--{self.title}{self.status}---")
-        print(f"Deadline: {self.deadline}")
-        print(f"To Do: {self.actions}\n")
+        print(self)
 
 #Creating a MHEC Scholarship object and adding tasks
 MHEC = Scholarship("MD Scholarship ", "June 01, 2026", "Open")
 MHEC.add_task("Fill out your FAFSA")
 MHEC.add_task("Create MDCAPS account")
-MHEC.display_info()
+print(MHEC)
 
 #Creating a TMCF Scholarship object and adding tasks
 TMCF = Scholarship("Thurgood Marshall College Fund ", "May 23, 2026", "Open")
 TMCF.add_task("Create TMCF Account")
 TMCF.add_task("Create video essay")
-TMCF.display_info()
+print(TMCF)
 
 #Creating a UNCF Scholarship object and adding tasks
 UNCF = Scholarship("United Negro College Fund ", "July 01, 2026", "Closed")
 UNCF.add_task("Ask Professors for a recommendation letter")
-UNCF.display_info()
+print(UNCF)
