@@ -1,9 +1,12 @@
+#This is a google dorking script that searches for documents and different positions
+#Created: 05/10/2026
+
 #!/bin/bash
 
 #Target Domain
 DOMAIN=""
 
-#Seeking the different files and terms
+#Seeking the different files and positions
 queries=(
     "site:$DOMAIN filetype:pdf"
     "site:$DOMAIN filetype:docx"
