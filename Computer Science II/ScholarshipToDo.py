@@ -49,6 +49,49 @@ class Scholarship:
     #Displaying the info for each scholarship
     def display_info(self):
         print(self)
+    
+
+#Displaying the scholarship menu
+def scholarship_menu():
+    print("Welcome to the Bulldog Scholarship Menu.\n")
+    print("Your default scholarships are:\n")
+    print("Thurgood Marshall College Fund \n")
+    print("United Negro College Fund \n")
+    print("Maryland Higher Education Commission\n")
+    print("Each scholarship has different tasks for you to do")
+    print("To add a scholarship, press 1")
+    print("To display your scholarships, press 2")
+    print("To edit a specific scholarship, press 3")
+
+    user_choice = 0
+
+    user_choice = int(input("What option do you want to pick?"))
+    
+    return user_choice
+
+def scholarship_options(scholarship_menu):
+    scholarship_name = ""
+    scholarship_deadline = ""
+    scholarship_status = ""
+
+    if scholarship_menu == 1:
+       scholarship_name = str(input("What is the name of the scholarship?"))
+       scholarship_deadline = str(input("Enter the deadline in Month, Day, Year. e.g June 1, 2019"))
+       scholarship_status = str(input("Enter open if the scholarship is still open. Enter closed if it is not"))
+       
+       scholarship_name = BowieState(scholarship_name,scholarship_deadline,scholarship_status)
+
+
+#Inheritance code
+class BowieState(Scholarship):
+    pass
+
+#Printing Scholarship menu
+scholarship_menu()
+
+Adobe = BowieState("Adobe", "September 09, 2027", "Open")
+Adobe.add_task("Fill out the form")
+print(Adobe)
 
 #Creating a MHEC Scholarship object and adding tasks
 MHEC = Scholarship("MD Scholarship ", "June 01, 2026", "Open")
