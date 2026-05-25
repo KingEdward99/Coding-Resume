@@ -15,10 +15,11 @@ class Employee {
         string lastName;
         int employeePassword;
         int employeeID;
-        map <int, int> employeeAccount;
+        map <string, string, int, int> employeeAccount;
 
         void setPassword();
         void verifyUser();
+        void createUser();
 };
 
 int main() {
@@ -57,4 +58,16 @@ void Employee::verifyUser() {
     }
 
     cout << "Access Granted " << endl;
+}
+
+void Employee::createUser() {
+    cout << "What is your first name?" << endl;
+    cin >> firstName;
+
+    cout << "What is your last name?" << endl;
+    cin >> lastName;
+
+    cout << "Set a 6 digit PIN: " << endl;
+    cin >> employeePassword;
+
 }
