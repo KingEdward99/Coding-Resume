@@ -1,3 +1,4 @@
+package CompoundInterest;
 /*
  * 
  * Name: Eddy Koundjou Yem

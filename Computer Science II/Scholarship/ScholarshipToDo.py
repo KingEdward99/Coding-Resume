@@ -80,6 +80,7 @@ def scholarship_options(scholarship_menu):
        scholarship_status = str(input("Enter open if the scholarship is still open. Enter closed if it is not"))
        
        scholarship_name = BowieState(scholarship_name,scholarship_deadline,scholarship_status)
+       print (scholarship_name)
 
 
 #Inheritance code
@@ -88,6 +89,7 @@ class BowieState(Scholarship):
 
 #Printing Scholarship menu
 scholarship_menu()
+scholarship_options(scholarship_menu)
 
 Adobe = BowieState("Adobe", "September 09, 2027", "Open")
 Adobe.add_task("Fill out the form")
