@@ -76,4 +76,5 @@ Each program is self‑contained. To run one:
 ---
 
 ## Notes
-These projects represent my transition from basic programming to more structured, multi-component software development. They demonstrate my ability to design programs that maintain state, handle user workflows, and model real-world systems using Python and Java. 
+These projects represent my transition from basic programming to more structured, multi-component software development. 
+They demonstrate my ability to design programs that maintain state, handle user workflows, and model real-world systems using Python and Java. 
