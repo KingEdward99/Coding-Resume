@@ -7,7 +7,7 @@ This folder contains six foundational programs written in C++ and Python created
 
 ## Overview of Programs
 
-### **1. Area of a Rectangle (C++) **
+### **1. Area of a Rectangle (C++)**
 A simple program that:
 - Prompts the user for the *length* and *width* of a rectangle  
 - Calculates the area using the formula:  
@@ -18,7 +18,7 @@ A simple program that:
 
 ---
 
-### **2. Bulldog Juice (C++) **
+### **2. Bulldog Juice (C++)**
 A store‑style ordering program that:
 - Asks the user how many of each juice they want  
 - Calculates the total cost based on item prices  
@@ -28,7 +28,7 @@ A store‑style ordering program that:
 
 ---
 
-### **3. Eddy's Apartment Manager (Python) **
+### **3. Eddy's Apartment Manager (Python)**
 A resident-management system for **8-bedroom apartment** that allows the user to:
 - Add new residents
 - Remove residents
@@ -58,7 +58,7 @@ A mathematical program where:
 
 ---
 
-### **6. Federal Tax Calculator**
+### **6. Federal Tax Calculator (C++)**
 A tax‑estimation program that:
 - Collects user tax information (income, deductions, filing status, etc.)  
 - Calculates estimated federal tax owed  
