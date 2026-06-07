@@ -50,7 +50,6 @@ class Scholarship:
     def display_info(self):
         print(self)
     
-
 #Displaying the scholarship menu
 def scholarship_menu():
     print("Welcome to the Bulldog Scholarship Menu.\n")
