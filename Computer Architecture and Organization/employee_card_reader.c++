@@ -13,23 +13,63 @@ class Employee {
     public:
         string firstName;
         string lastName;
-        int employeePassword;
-        int employeeID;
-        map <string, string, int, int> employeeAccount;
+        string employeePassword;
+        string employeeID;
+        static map <string, Employee> employeeDatabase;
 
+        //Default constructor
+        Employee() : firstName(""), lastName(""), employeeID(""), employeePassword("") {}
+
+        //Constructor
+        Employee(string fName, string lName, string ID, string Password)
+        : firstName(fName), lastName(lName), employeeID(ID), employeePassword(Password) {}
+
+        //methods
         void setPassword();
         void verifyUser();
         void createUser();
+        void menu();
 };
 
+map <string, Employee> Employee::employeeDatabase;
+
 int main() {
-    Employee engineer1;
+    Employee temp("John", "Doe", "0001", "1000");
+    temp.menu();
+    return 0;
+
+    /*
     engineer1.firstName = "Elijah";
     engineer1.lastName = "McCoy";
     engineer1.employeeID = 0001;
     engineer1.employeePassword = 3290;
 
     engineer1.verifyUser();
+    */
+
+}
+
+void Employee::menu() {
+    int userOption = 0;
+    
+    while (true){
+        cout << "Welcome to employee account management system. " << endl;
+        cout << "To create your account, press 1. " << endl;
+        cout << "Press 2 to exit. " << endl;
+        cin >> userOption;
+
+        if (userOption == 1) {
+            createUser();
+        }
+        else if (userOption == 2) {
+            cout << "Exiting the program..." << endl;
+            exit(0); 
+        }
+        else {
+            cout << "Invalid input!" << endl; 
+        }
+
+    }
 }
 
 void Employee::setPassword() {
@@ -38,8 +78,8 @@ void Employee::setPassword() {
 }
 
 void Employee::verifyUser() {
-    int enteredID = 0;
-    int enteredPassword = 0; 
+    string enteredID = 0;
+    string enteredPassword = 0; 
 
     cout << "Please enter your 4 digit employee ID " << endl;
     cin >> enteredID;
@@ -61,13 +101,29 @@ void Employee::verifyUser() {
 }
 
 void Employee::createUser() {
-    cout << "What is your first name?" << endl;
-    cin >> firstName;
+   string tempfirst, tempLast, tempID, tempPin;
 
-    cout << "What is your last name?" << endl;
-    cin >> lastName;
+   cout << "You are at the create user section " << endl;
 
-    cout << "Set a 6 digit PIN: " << endl;
-    cin >> employeePassword;
+   cout << "Enter your first name: " << endl;
+   cin >> tempfirst;
+
+   cout << "Enter your last name: " << endl;
+   cin >> tempLast;
+   
+   cout << "Enter a 4 digit userID " << endl;
+   tempID = "";
+   while(tempID.length() != 4) {
+    cin >> tempID;
+   }
+   
+   cout << "Enter a 4 digit PIN" << endl;
+   tempPin = "";
+   while(tempPin.length() != 4) {
+    cin >> tempPin;
+   }
+   
+   Employee newAccount(tempfirst, tempLast, tempID, tempPin);
+   Employee::employeeDatabase[tempID] = newAccount; 
 
 }
