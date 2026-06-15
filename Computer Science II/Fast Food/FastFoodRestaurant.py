@@ -3,8 +3,8 @@
 #Presenting the menu to the customer
 def menu():
     print("Welcome to The Pub")
-    print("We have chicken wings for $1 per wings")
-    print("The wing flavors are: barbecue, zing, and lemon pepper")
+    print("We have chicken wings for $1 per wing")
+    print("The wing flavors are: BBQ, Zeng, and Lemon Pepper")
     print("Our cornbread is $2")
     print("Our drink options are Sprite, Coca-Cola, and water")
 
@@ -23,43 +23,56 @@ def userOrder():
     userOrder = int(input("What do you want to order?"))
 
     #Initializing the food options
-    wings_quantity = 0
-    user_flavor = ""
-    cornbread = 0
-    drink_quantity = 0
+    wingsQuantity = 0
+    wingsFlavor = 0
+    printWingsFlavor = ""
+    drinkFlavor = ""
+    cornbreadQuantity = 0
+    drinkQuantity = 0
+    userOrderDone = 1
+    userCompleteOrder = []
 
     #Going through the options
-    if userOrder == 1:
-        wings_quantity = int(input("How many wings do you want?"))
+    while (userOrderDone == 1):
+        if userOrder == 1:
+            wingsQuantity += int(input("How many wings do you want?"))
 
-        print("If you want bbq, press 1")
-        print("If you want Lemon Pepper, press 2")
-        print("If you want Zeng, press 3")
+            print("If you want BBQ, press 1")
+            print("If you want Lemon Pepper, press 2")
+            print("If you want Zeng, press 3")
 
-        wings_flavor = int(input("What flavor do you want?"))
+            wingsFlavor = int(input("Which flavor of wings do you want?"))
+            if wingsFlavor == 1:
+                printWingsFlavor = "BBQ"
+            elif wingsFlavor == 2:
+                printWingsFlavor = "Lemon Pepper"
+            elif wingsFlavor == 3:
+                printWingsFlavor = "Zeng"
+            
+            print("Number of wings you ordered: ",wingsQuantity )
+            print("The flavor of the  wings: ", printWingsFlavor)
+        elif userOrder == 2:
+            cornbreadQuantity += int(input("How much cornbread do you want"))
+            print("You ordered", cornbreadQuantity, "cornbread.")
+        elif userOrder == 3:
+            drinkQuantity += int(input("How many drinks do you want?"))
+            print("Press 1 for Sprite. Press 2 for Coca-Cola. Press 3 for water.")
+            userDrinkFlavor = input("Which drink do you want?")
+            if userDrinkFlavor == 1:
+                drinkFlavor == "Sprite"
+            elif userDrinkFlavor == 2:
+                drinkFlavor == "Coca-Cola"
+            elif userDrinkFlavor == 3:
+                drinkFlavor == "water"
+                
+            print("You ordered", drinkQuantity, drinkFlavor)
+        else:
+            print("Invalid selection")
         
-        if wings_flavor == 1:
-            user_flavor = "barbecue"
-        elif wings_flavor == 2:
-            user_flavor = "Lemon Pepper"
-        elif wings_flavor == 3:
-            user_flavor = "Zheng"
-        else: 
-            user_flavor = "Unknown Flavor"
-        
-        print("Number of wings you ordered: ",wings_quantity )
-        print("The flavor of the  wings: ", user_flavor)
-
-    elif userOrder == 2:
-         cornbread = int(input("How much cornbread do you want"))
-         print("You ordered", cornbread, "cornbread.")
-    elif userOrder == 3:
-        drink_quantity = int(input("How many drinks do you want?"))
-        drink_flavor = input("Which drink do you want?")
-        print("You ordered", drink_quantity, drink_flavor)
-    else:
-        print("Invalid selection")
-    return wings_quantity, cornbread, drink_quantity
+        print("Do you want anything else? ")
+        userOrderDone = int(input("Press 1 for Yes. Press 2 for No"))
+    
+    return wingsQuantity, cornbreadQuantity, drinkQuantity
 
 
 def orderProcessing(userOrder):
@@ -78,11 +91,9 @@ def orderProcessing(userOrder):
     print("Total order: $", total_order)
 
     return total_order
-
-
-    
+   
 #Collecting user payment 
-def paymentcollection():
+def paymentcollection(userOrder):
     total_cost = 0.0
     user_payment = 0.0
 
@@ -99,9 +110,6 @@ def paymentcollection():
 #Presenting the menu
 menu()
 
-#Collecting the user order
-#userOrder()
-
-#paymentcollection()
-
 orderProcessing(userOrder)
+
+#paymentcollection(orderProcessing)
