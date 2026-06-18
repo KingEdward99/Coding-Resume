@@ -30,13 +30,13 @@ A financial modeling program that :
 
 ### **3. Fast Food Restaurant Ordering System (Python)**
 A menu-driven ordering application that lets users purchase  :
-- wings
+- wings (with selectable flavors)
 - cornbread
 - drinks
 
-The program calculates totals, handles multiple selections, and simulates a simple point-of-sale system
+The program supports multiple items per order, calculates totals based on quantity and pricing, and processes user payment with change calculation. It models a simplified restaurant workflow from ordering to checkout
 
-**Concepts demonstrated:** branching logic, menu systems, loops, input handling
+**Concepts demonstrated:** branching logic, loop-controlled workflow, state-management, input handling and validation, modular function design, arithmetic operations, user-driven workflows
 
 ---
 
