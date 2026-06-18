@@ -9,10 +9,12 @@ def menu():
     print("Our drink options are Sprite, Coca-Cola, and water")
 
 #The options
-def foodprice():
-    wings = 1.00
-    cornbread = 2.00
-    drink = 1.00
+def foodPrice():
+    wingsPrice = 1.00
+    cornbreadPrice = 2.00
+    drinkPrice = 1.00
+
+    return wingsPrice, cornbreadPrice, drinkPrice
 
 #Collecting the user's order
 def userOrder():
@@ -72,7 +74,8 @@ def userOrder():
                 drinkFlavor == "water"
                 
             print("You ordered ", drinkQuantity, drinkFlavor)
-
+        
+        #In case the user presses the wrong option
         else:
             print("Invalid selection")
         
@@ -80,6 +83,7 @@ def userOrder():
         print("Do you want anything else? ")
         userOrderDone = int(input("Press 1 for Yes. Press 2 for No"))
 
+        #When the user wants more food
         if userOrderDone == 1:
             print("\nIf you want some wings, press 1")
             print("If you want some corbread, press 2")
@@ -88,42 +92,45 @@ def userOrder():
 
     return wingsQuantity, cornbreadQuantity, drinkQuantity
 
+#Doing the math of calculating the food price
+def orderProcessing(userOrderFunc, foodPriceFunc):
+    #Calling the functions
+    wingsQuantity, cornbreadQuantity, drinkQuantity = userOrderFunc()
+    wingsPrice, cornbreadPrice, drinkPrice = foodPriceFunc()
 
-def orderProcessing(userOrder):
-    wings_quantity, cornbread, drink_quantity = userOrder()
-
-    wings_total_price = 1.00 * wings_quantity
-    cornbread_total_price = 2.00 * cornbread
-    drink_total_price = 1.00 * drink_quantity
-
-    total_order = wings_total_price + cornbread_total_price + drink_total_price
+    #Calculating the total food ordered
+    wingsTotalPrice = wingsQuantity * wingsPrice
+    cornbreadTotalPrice = cornbreadPrice * cornbreadQuantity
+    drinkTotalPrice = drinkPrice * drinkQuantity
     
+    totalOrder = wingsTotalPrice + cornbreadTotalPrice + drinkTotalPrice
+    
+    #Displaying the total cost to the user
     print("\n Order Summary:")
-    print("Wings total: $", wings_total_price)
-    print("Cornbread total: $", cornbread_total_price)
-    print("Drink total: $", drink_total_price)
-    print("Total order: $", total_order)
+    print("Wings total: $", wingsTotalPrice)
+    print("Cornbread total: $", cornbreadTotalPrice)
+    print("Drink total: $", drinkTotalPrice)
+    print("Total order: $", totalOrder)
 
-    return total_order
+    return totalOrder
    
 #Collecting user payment 
-def paymentcollection(userOrder):
-    total_cost = 0.0
-    user_payment = 0.0
+def paymentcollection(orderProcessingFunc):
+    totalOrder = orderProcessingFunc(userOrder, foodPrice)
+    userPayment = 0.0
 
-    while user_payment < total_cost:
-        print("Your total cost is $: ", total_cost)
-        user_payment = float(input("How much are you willing to pay?"))
+    #Presenting the total cost and verifying the user pays
+    while userPayment < totalOrder:
+        print("Your total cost is $: ", totalOrder)
+        userPayment = float(input("How much are you willing to pay?"))
 
-        if user_payment < total_cost:
+        #In case the user pays more and the program needs to return change
+        if userPayment < totalOrder:
             print("Insufficent funds")
         else:
-            user_change = user_payment - total_cost
-            print("Your change is $", user_change)
+            userChange = userPayment - totalOrder
+            print("Your change is $", userChange)
 
-#Presenting the menu
+#Running the program
 menu()
-
-orderProcessing(userOrder)
-
-#paymentcollection(orderProcessing)
+paymentcollection(orderProcessing)
