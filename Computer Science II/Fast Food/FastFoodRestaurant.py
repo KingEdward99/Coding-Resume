@@ -24,16 +24,16 @@ def userOrder():
 
     #Initializing the food options
     wingsQuantity = 0
-    wingsFlavor = 0
-    printWingsFlavor = ""
-    drinkFlavor = ""
+    wingsFlavor = ""
     cornbreadQuantity = 0
     drinkQuantity = 0
+    drinkFlavor = ""
+
     userOrderDone = 1
-    userCompleteOrder = []
 
     #Going through the options
     while (userOrderDone == 1):
+        #User ordering wings
         if userOrder == 1:
             wingsQuantity += int(input("How many wings do you want?"))
 
@@ -43,21 +43,27 @@ def userOrder():
 
             wingsFlavor = int(input("Which flavor of wings do you want?"))
             if wingsFlavor == 1:
-                printWingsFlavor = "BBQ"
+                wingsFlavor = "BBQ"
             elif wingsFlavor == 2:
-                printWingsFlavor = "Lemon Pepper"
+                wingsFlavor = "Lemon Pepper"
             elif wingsFlavor == 3:
-                printWingsFlavor = "Zeng"
+                wingsFlavor= "Zeng"
             
             print("Number of wings you ordered: ",wingsQuantity )
-            print("The flavor of the  wings: ", printWingsFlavor)
+            print("The flavor of the  wings: ", wingsFlavor)
+        
+        #User ordering cornbread
         elif userOrder == 2:
             cornbreadQuantity += int(input("How much cornbread do you want"))
             print("You ordered", cornbreadQuantity, "cornbread.")
+        
+        #User ordering drinks
         elif userOrder == 3:
             drinkQuantity += int(input("How many drinks do you want?"))
+
             print("Press 1 for Sprite. Press 2 for Coca-Cola. Press 3 for water.")
             userDrinkFlavor = input("Which drink do you want?")
+
             if userDrinkFlavor == 1:
                 drinkFlavor == "Sprite"
             elif userDrinkFlavor == 2:
@@ -65,13 +71,21 @@ def userOrder():
             elif userDrinkFlavor == 3:
                 drinkFlavor == "water"
                 
-            print("You ordered", drinkQuantity, drinkFlavor)
+            print("You ordered ", drinkQuantity, drinkFlavor)
+
         else:
             print("Invalid selection")
         
+        #Asking the user if they want anymore food
         print("Do you want anything else? ")
         userOrderDone = int(input("Press 1 for Yes. Press 2 for No"))
-    
+
+        if userOrderDone == 1:
+            print("\nIf you want some wings, press 1")
+            print("If you want some corbread, press 2")
+            print("If you want some a drink, press 3")
+            userOrder = int(input("What do you want to order?"))
+
     return wingsQuantity, cornbreadQuantity, drinkQuantity
 
 
