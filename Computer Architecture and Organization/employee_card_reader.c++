@@ -1,6 +1,7 @@
 /*
     This program simulates a keypad verification system.
     Employees enter their pin and the database verifies if they are an employee or not
+    Employees can be entered into the database
 */
 
 #include <iostream>
@@ -10,12 +11,13 @@
 using namespace std;
 
 class Employee {
+    //variables for the program
     public:
         string firstName;
         string lastName;
         string employeePassword;
         string employeeID;
-        static map <string, Employee> employeeDatabase;
+        static map <string, Employee> employeeDatabase; //using hashmaps for rapid search within the system
 
         //Default constructor
         Employee() : firstName(""), lastName(""), employeeID(""), employeePassword("") {}
@@ -31,21 +33,13 @@ class Employee {
         void menu();
 };
 
+//Initializing the employee database
 map <string, Employee> Employee::employeeDatabase;
 
 int main() {
     Employee temp("John", "Doe", "0001", "1000");
     temp.menu();
     return 0;
-
-    /*
-    engineer1.firstName = "Elijah";
-    engineer1.lastName = "McCoy";
-    engineer1.employeeID = 0001;
-    engineer1.employeePassword = 3290;
-
-    engineer1.verifyUser();
-    */
 
 }
 
@@ -72,14 +66,8 @@ void Employee::menu() {
     }
 }
 
-void Employee::setPassword() {
-    cout << "Please enter your 4 digit pin: " << endl;
-    cin >> employeePassword; 
-}
-
 void Employee::verifyUser() {
-    string enteredID = 0;
-    string enteredPassword = 0; 
+    string enteredID, enteredPassword;
 
     cout << "Please enter your 4 digit employee ID " << endl;
     cin >> enteredID;
@@ -87,14 +75,9 @@ void Employee::verifyUser() {
     cout << "Please enter your 4 digit employee password" << endl;
     cin >> enteredPassword;
 
-    while (enteredID != employeeID || enteredPassword != employeePassword) {
-        cout << "The credentials you entered are wrong " << endl;
-
-        cout << "Enter your 4 digit employee ID. " << endl;
-        cin >> enteredID;
-
-        cout << "Enter your 4 digit pin." << endl; 
-        cin >> enteredPassword;
+    if(employeeDatabase.count(enteredID) == 0) {
+        cout << "User not found." << endl;
+        return;
     }
 
     cout << "Access Granted " << endl;
@@ -127,3 +110,36 @@ void Employee::createUser() {
    Employee::employeeDatabase[tempID] = newAccount; 
 
 }
+
+//The Cache Layer which simulates the M1-SRAM
+
+struct CacheLine {
+    Employee profile;
+
+    int lastAccessTime; // timestamp for LRU
+
+};
+
+class CacheController {
+    private:
+        vector <CacheLine> sramCache; //M1 Cache that holds 3 employees information
+        const size_t CACHE_MAX_SIZE = 3;
+        int systemClock = 0;
+    
+    public:
+        //Implementation of the LRU which checks the cache first, then the employee database
+        bool verifyUser(string inputID, string inputPIN) {
+            systemClock++;
+
+            cout << "\n [DOOR] User " << inputID << "swiped at keypad." << endl;
+
+            for(int i = 0; i < sramCache.size(); i++) {
+                if (sramCache[i].profile.employeeID == inputID  && sramCache[i].profile.employeePassword == inputPIN) {
+                    cout << "[CACHE HIT] User found in SRAM cache." << endl;
+                    sramCache[i].lastAccessTime = systemClock;
+                    return true;
+                }
+            }
+
+        }
+};
