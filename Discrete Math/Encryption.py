@@ -1,4 +1,4 @@
-#This code creates an encryption and decryption algorithm for messages below 20 characters
+#This code creates an encryption and decryption algorithm for messages
 
 #Menu presenting the options to the user
 def menu():
@@ -12,8 +12,7 @@ def menu():
 
 #Encryption function
 def encrypt():
-    #The message gets into a list so each character can be encrypted
-    message = (input("What message do you want me to encrypt?"))
+    message = input("What message do you want me to encrypt?")
     encrypt_message = ""
 
     for char in message:
@@ -22,11 +21,21 @@ def encrypt():
     print("Encrypted message: ", encrypt_message)
     return encrypt_message
 
-#def decrypt(message):
- #   print(message)
+#Decryption function
+def decrypt():
+    message = input("What message do you want me to decrypt?")
+    decrypt_message = ""
+
+    for char in message:
+        decrypt_message += chr(ord(char) - 5)
+
+    print("Decrypted message: ", decrypt_message)
+    return decrypt_message
 
 user_choice = menu()
 if user_choice == 1:
     encrypt()
+elif user_choice == 2:
+    decrypt()
 else:
     print("Wrong choice")
