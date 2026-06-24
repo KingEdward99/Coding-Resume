@@ -58,8 +58,8 @@ class Scholarship:
         print("United Negro College Fund \n")
         print("Maryland Higher Education Commission\n")
         print("Each scholarship has different tasks for you to do")
-        print("To add a scholarship, press 1")
-        print("To display your scholarships, press 2")
+        print("To display your scholarships, press 1")
+        print("To add a scholarships, press 2")
         print("To edit a specific scholarship, press 3")
 
         user_choice = 0
@@ -68,20 +68,13 @@ class Scholarship:
         
         return user_choice
     
-    def scholarship_options(scholarship_menu):
-        scholarship_name = ""
-        scholarship_deadline = ""
-        scholarship_status = ""
-
-        if scholarship_menu == 1:
-            scholarship_name = str(input("What is the name of the scholarship?"))
-            scholarship_deadline = str(input("Enter the deadline in Month, Day, Year. e.g June 1, 2019"))
-            scholarship_status = str(input("Enter open if the scholarship is still open. Enter closed if it is not"))
-        else:
-            print("No good option")
-        
-        scholarship_name = BowieState(scholarship_name,scholarship_deadline,scholarship_status)
-        print (scholarship_name)
+    def scholarship_options():
+       
+        scholarship_name = str(input("What is the name of the scholarship?"))
+        scholarship_deadline = str(input("Enter the deadline in Month, Day, Year. e.g June 1, 2019"))
+        scholarship_status = str(input("Enter open if the scholarship is still open. Enter closed if it is not"))
+    
+        print (scholarship_name, scholarship_deadline, scholarship_status)
 
 #Inheritance code
 class BowieState(Scholarship):
@@ -89,23 +82,30 @@ class BowieState(Scholarship):
 
 #Printing Scholarship menu
 BowieState = Scholarship
-
-Scholarship.scholarship_menu()
+user_option = Scholarship.scholarship_menu()
 
 #Creating a MHEC Scholarship object and adding tasks
 MHEC = Scholarship("MD Scholarship ", "June 01, 2026", "Open")
 MHEC.actions.append("Fill out the form")
-print(MHEC)
+
 
 #Creating a TMCF Scholarship object and adding tasks
 TMCF = Scholarship("Thurgood Marshall College Fund ", "May 23, 2026", "Open")
 TMCF.actions.append("Fill out the form")
 TMCF.actions.append("Complete your video essay")
-print(TMCF)
+
 
 #Creating a UNCF Scholarship object and adding tasks
 UNCF = Scholarship("United Negro College Fund ", "July 01, 2026", "Closed")
 UNCF.actions.append("Fill out the form.")
 UNCF.actions.append("Finish your written essay.")
 UNCF.actions.append("Submit your recommendation letter.")
-print(UNCF)
+
+if user_option == 1:
+    print(MHEC)
+    print(TMCF)
+    print(UNCF)
+elif user_option == 2:
+    Scholarship.scholarship_options()
+elif user_option == 3:
+    edit_option = int(input("Which Scholarship do you want to edit?"))
