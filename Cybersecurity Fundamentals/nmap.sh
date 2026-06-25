@@ -7,15 +7,19 @@ DOMAIN="scanme.nmap.org"
 OUTPUT="nmap_results.txt"
 
 #Starting the scan
-echo "---Starting Scan ---" > $OUTPUT
+echo "---Starting Scan on $DOMAIN ---" > $OUTPUT
 
 
 echo "Host availability for $DOMAIN >> $OUTPUT"
 
-#nmap command for detemrining host availability
+#nmap command for determining host availability
 nmap -sn $DOMAIN >> $OUTPUT
 
+#nmap command for previewing which hosts are going to be scanned
+nmap -sL $DOMAIN >> $OUTPUT
 
+#Conducting an Address Resolution Protocol (ARP) request without port-scanning
+nmap -PR -sn $DOMAIN >> $OUTPUT
 
 #Scanning the top 100 most common ports with their service version and operating system
 echo "Top 100 most common ports for $DOMAIN >> $OUTPUT"
