@@ -68,13 +68,27 @@ class Scholarship:
         
         return user_choice
     
-    def scholarship_options():
-       
-        scholarship_name = str(input("What is the name of the scholarship?"))
-        scholarship_deadline = str(input("Enter the deadline in Month, Day, Year. e.g June 1, 2019"))
-        scholarship_status = str(input("Enter open if the scholarship is still open. Enter closed if it is not"))
-    
-        print (scholarship_name, scholarship_deadline, scholarship_status)
+    def add_scholarship():
+        #Creating a new scholarship object 
+        new_scholarship = Scholarship("","","") 
+
+        #Adding the necessary info for scholarship
+        new_scholarship.title = input("What is the name of the scholarship?")
+        new_scholarship.deadline = input("Enter the deadline in Month, Day, Year. e.g June 1, 2019")
+        new_scholarship.status = input("Enter open if the scholarship is still open. Enter closed if it is not")
+
+        #Adding tasks to the scholarship
+        print("Add up to four tasks for your new scholarship")
+
+        for i in range(4):
+            task = input(f"task {i+1}: ")
+            new_scholarship.actions.append(task)
+            if task.strip() == "":
+                break
+        
+        print (new_scholarship)
+
+        return new_scholarship
 
 #Inheritance code
 class BowieState(Scholarship):
@@ -106,6 +120,6 @@ if user_option == 1:
     print(TMCF)
     print(UNCF)
 elif user_option == 2:
-    Scholarship.scholarship_options()
+    Scholarship.add_scholarship()
 elif user_option == 3:
     edit_option = int(input("Which Scholarship do you want to edit?"))
