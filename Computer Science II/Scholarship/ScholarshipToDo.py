@@ -7,6 +7,10 @@
 """
 
 #Scholarship class with its functions
+from asyncio import tasks
+from ctypes import sizeof
+
+
 class Scholarship:
     #Initializing function
     def __init__(self, title, deadline, status):
@@ -122,4 +126,17 @@ if user_option == 1:
 elif user_option == 2:
     Scholarship.add_scholarship()
 elif user_option == 3:
-    edit_option = int(input("Which Scholarship do you want to edit?"))
+    print("You have the following scholarships you can edit: ", MHEC.title, TMCF.title, UNCF.title)
+    edit_option = int(input("Enter the scholarship you want to edit: "))
+    if edit_option == 1:
+        add_or_remove = int(input("Press 1 to add a task. Press 2 to remove: "))
+        if add_or_remove == 1:
+            user_add_task = input("What task do you want to add?")
+            MHEC.actions.append(user_add_task)
+            print(MHEC)
+        elif add_or_remove == 2:
+            for tasks in MHEC.actions:
+                print(tasks, MHEC.actions)
+            user_remove_task = int(input("Select the action you want to remove: "))
+            MHEC.actions.pop(user_remove_task)
+            print(MHEC)
