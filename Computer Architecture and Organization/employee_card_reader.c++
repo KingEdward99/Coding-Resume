@@ -46,7 +46,7 @@ int main() {
 void Employee::menu() {
     int userOption = 0;
     
-    while (true){
+    while (userOption == 0){
         cout << "Welcome to employee account management system. " << endl;
         cout << "To create your account, press 1. " << endl;
         cout << "Press 2 to exit. " << endl;
@@ -141,5 +141,50 @@ class CacheController {
                 }
             }
 
+
+            //User not found in the cache
+            cout << "[CACHE MISS] User not found in SRAM cache. " << endl;
+
+            Employee foundUser;
+            if (Employee::employeeDatabase.count(inputID) == 1) {
+                foundUser = Employee::employeeDatabase[inputID];
+            }
+            else {
+                cout << "[DATABASE MISS] User not found in main memory. " << endl;
+                return false;
+            }
+
+            if (foundUser.employeePassword != inputPIN) {
+                cout << "[AUTH FAIL] Incorrect PIN. " << endl; 
+                return false; 
+            }
+
+            cout << "[DATABASE HIT] User found in main memory. " << endl; 
+            
+            //Inserting the found user into the cache
+            CacheLine newLine{foundUser, systemClock};
+
+            //If there is space, add him; If not evict the last person from the cache
+            if(sramCache.size() < CACHE_MAX_SIZE) {
+                sramCache.push_back(newLine);
+            }
+            else {
+                int lruIndex = 0;
+                int oldestTime = sramCache[0].lastAccessTime;
+
+                for(int i = 1; i < sramCache.size(); i++) {
+                    if(sramCache[i].lastAccessTime < oldestTime){
+                        oldestTime = sramCache[i].lastAccessTime;
+                        lruIndex = 1;
+                    }
+                }
+
+                cout << " [LRU EVICT] Removing user " << sramCache[lruIndex].profile.employeeID << "from cache " << endl; 
+
+                sramCache[lruIndex] = newLine;
+
+            }
+            
+            return true;
         }
 };
