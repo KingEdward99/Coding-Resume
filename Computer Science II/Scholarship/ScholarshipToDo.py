@@ -119,17 +119,23 @@ UNCF.actions.append("Fill out the form.")
 UNCF.actions.append("Finish your written essay.")
 UNCF.actions.append("Submit your recommendation letter.")
 
+#Evaluating the user option
+#Printing the default scholarships
 if user_option == 1:
     print(MHEC)
     print(TMCF)
     print(UNCF)
+#Adding a new scholarship
 elif user_option == 2:
     Scholarship.add_scholarship()
+#Editing the scholarships
 elif user_option == 3:
     print("You have the following scholarships you can edit: ", MHEC.title, TMCF.title, UNCF.title)
     edit_option = int(input("Enter the scholarship you want to edit: "))
+    #Editing MHEC
     if edit_option == 1:
         add_or_remove = int(input("Press 1 to add a task. Press 2 to remove: "))
+        #Adding or removing a task to MHEC
         if add_or_remove == 1:
             user_add_task = input("What task do you want to add?")
             MHEC.actions.append(user_add_task)
@@ -140,3 +146,29 @@ elif user_option == 3:
             user_remove_task = int(input("Select the action you want to remove: "))
             MHEC.actions.pop(user_remove_task)
             print(MHEC)
+    elif edit_option == 2:
+        add_or_remove = int(input("Press 1 to add a task. Press 2 to remove: "))
+        #Adding or removing a task to TMCF
+        if add_or_remove == 1:
+            user_add_task = input("What task do you want to add?")
+            TMCF.actions.append(user_add_task)
+            print(TMCF)
+        elif add_or_remove == 2:
+            for tasks in TMCF.actions:
+                print(tasks, TMCF.actions)
+            user_remove_task = int(input("Select the action you want to remove: "))
+            TMCF.actions.pop(user_remove_task)
+            print(TMCF)
+    elif edit_option == 3:
+        add_or_remove = int(input("Press 1 to add a task. Press 2 to remove: "))
+        #Adding or removing a task to MHEC
+        if add_or_remove == 1:
+            user_add_task = input("What task do you want to add?")
+            UNCF.actions.append(user_add_task)
+            print(UNCF)
+        elif add_or_remove == 2:
+            for tasks in UNCF.actions:
+                print(tasks, UNCF.actions)
+            user_remove_task = int(input("Select the action you want to remove: "))
+            UNCF.actions.pop(user_remove_task)
+            print(UNCF)
