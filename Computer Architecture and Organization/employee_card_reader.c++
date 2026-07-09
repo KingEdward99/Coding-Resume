@@ -31,14 +31,20 @@ class Employee {
         void verifyUser();
         void createUser();
         void menu();
+        void verifyUserTest();
 };
 
 //Initializing the employee database
 map <string, Employee> Employee::employeeDatabase;
 
 int main() {
-    Employee temp("John", "Doe", "0001", "1000");
-    temp.menu();
+    //Inserting values in the employee database
+    Employee::employeeDatabase["9821"] = Employee("Katherine", "Johnson", "9821", "1234");
+
+    //Testing the code
+    Employee temp;
+    temp.verifyUserTest();
+
     return 0;
 
 }
@@ -66,6 +72,20 @@ void Employee::menu() {
     }
 }
 
+//Verifying if the user is in the database
+void Employee::verifyUserTest() {
+    string enteredID;
+    bool found = false;
+
+    cout << "Please enter your 4 digit employee ID: ";
+    cin >> enteredID;
+
+    if (employeeDatabase.count(enteredID)) {
+        cout << "Employee match" << endl;
+    } else {
+        cout << "Employee NOT found" << endl;
+    }
+}
 void Employee::verifyUser() {
     string enteredID, enteredPassword;
 
@@ -175,7 +195,7 @@ class CacheController {
                 for(int i = 1; i < sramCache.size(); i++) {
                     if(sramCache[i].lastAccessTime < oldestTime){
                         oldestTime = sramCache[i].lastAccessTime;
-                        lruIndex = 1;
+                        lruIndex = i;
                     }
                 }
 
