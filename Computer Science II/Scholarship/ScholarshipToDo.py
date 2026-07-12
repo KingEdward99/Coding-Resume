@@ -138,13 +138,12 @@ elif user_option == 3:
         #Adding or removing a task to MHEC
         if add_or_remove == 1:
             user_add_task = input("What task do you want to add?")
-            MHEC.actions.append(user_add_task)
+            MHEC.add_task()
             print(MHEC)
         elif add_or_remove == 2:
             for tasks in MHEC.actions:
                 print(tasks, MHEC.actions)
-            user_remove_task = int(input("Select the action you want to remove: "))
-            MHEC.actions.pop(user_remove_task)
+            MHEC.remove_task()
             print(MHEC)
     elif edit_option == 2:
         add_or_remove = int(input("Press 1 to add a task. Press 2 to remove: "))
