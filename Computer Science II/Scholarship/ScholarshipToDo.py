@@ -6,11 +6,6 @@
    user can apply to them.
 """
 
-#Scholarship class with its functions
-from asyncio import tasks
-from ctypes import sizeof
-
-
 class Scholarship:
     #Initializing function
     def __init__(self, title, deadline, status):
@@ -55,7 +50,7 @@ class Scholarship:
         print(self)
     
     #Displaying the scholarship menu
-    def scholarship_menu():
+    def scholarship_menu(self):
         print("Welcome to the Bulldog Scholarship Menu.\n")
         print("Your default scholarships are:\n")
         print("Thurgood Marshall College Fund \n")
@@ -72,7 +67,7 @@ class Scholarship:
         
         return user_choice
     
-    def add_scholarship():
+    def add_scholarship(self):
         #Creating a new scholarship object 
         new_scholarship = Scholarship("","","") 
 
@@ -93,14 +88,56 @@ class Scholarship:
         print (new_scholarship)
 
         return new_scholarship
-
-#Inheritance code
-class BowieState(Scholarship):
-    pass
+    
+    def edit_scholarship(self, MHEC, TMCF, UNCF):
+        print("You have the following scholarships you can edit: ", MHEC.title, TMCF.title, UNCF.title)
+        edit_option = int(input("Enter the scholarship you want to edit: "))
+        #Editing MHEC
+        if edit_option == 1:
+            add_or_remove = int(input("Press 1 to add a task. Press 2 to remove: "))
+            #Adding or removing a task to MHEC using the functions
+            if add_or_remove == 1:
+                user_add_task = input("What task do you want to add?")
+                MHEC.add_task(user_add_task)
+                print(MHEC)
+            elif add_or_remove == 2:
+                for tasks in MHEC.actions:
+                    print(tasks)
+                user_remove_task = input("What task do you want to remove?")
+                MHEC.remove_task(user_remove_task)
+                print(MHEC)
+        #Editing TMCF
+        elif edit_option == 2:
+            add_or_remove = int(input("Press 1 to add a task. Press 2 to remove: "))
+            #Adding or removing a task to TMCF
+            if add_or_remove == 1:
+                user_add_task = input("What task do you want to add?")
+                TMCF.actions.append(user_add_task)
+                print(TMCF)
+            elif add_or_remove == 2:
+                for tasks in TMCF.actions:
+                    print(tasks)
+                user_remove_task = input("Select the action you want to remove: ")
+                TMCF.remove_task(user_remove_task)
+                print(TMCF)
+        #editing UNCF 
+        elif edit_option == 3:
+            add_or_remove = int(input("Press 1 to add a task. Press 2 to remove: "))
+            #Adding or removing a task to MHEC
+            if add_or_remove == 1:
+                user_add_task = input("What task do you want to add?")
+                UNCF.actions.append(user_add_task)
+                print(UNCF)
+            elif add_or_remove == 2:
+                for tasks in UNCF.actions:
+                    print(tasks)
+                user_remove_task = input("Select the action you want to remove: ")
+                UNCF.remove_task(user_remove_task)
+                print(UNCF)
 
 #Printing Scholarship menu
-BowieState = Scholarship
-user_option = Scholarship.scholarship_menu()
+menu = Scholarship("Menu", "", "")
+user_option = menu.scholarship_menu()
 
 #Creating a MHEC Scholarship object and adding tasks
 MHEC = Scholarship("MD Scholarship ", "June 01, 2026", "Open")
@@ -127,47 +164,7 @@ if user_option == 1:
     print(UNCF)
 #Adding a new scholarship
 elif user_option == 2:
-    Scholarship.add_scholarship()
+    new_scholarship = menu.add_scholarship()
 #Editing the scholarships
 elif user_option == 3:
-    print("You have the following scholarships you can edit: ", MHEC.title, TMCF.title, UNCF.title)
-    edit_option = int(input("Enter the scholarship you want to edit: "))
-    #Editing MHEC
-    if edit_option == 1:
-        add_or_remove = int(input("Press 1 to add a task. Press 2 to remove: "))
-        #Adding or removing a task to MHEC
-        if add_or_remove == 1:
-            user_add_task = input("What task do you want to add?")
-            MHEC.add_task()
-            print(MHEC)
-        elif add_or_remove == 2:
-            for tasks in MHEC.actions:
-                print(tasks, MHEC.actions)
-            MHEC.remove_task()
-            print(MHEC)
-    elif edit_option == 2:
-        add_or_remove = int(input("Press 1 to add a task. Press 2 to remove: "))
-        #Adding or removing a task to TMCF
-        if add_or_remove == 1:
-            user_add_task = input("What task do you want to add?")
-            TMCF.actions.append(user_add_task)
-            print(TMCF)
-        elif add_or_remove == 2:
-            for tasks in TMCF.actions:
-                print(tasks, TMCF.actions)
-            user_remove_task = int(input("Select the action you want to remove: "))
-            TMCF.actions.pop(user_remove_task)
-            print(TMCF)
-    elif edit_option == 3:
-        add_or_remove = int(input("Press 1 to add a task. Press 2 to remove: "))
-        #Adding or removing a task to MHEC
-        if add_or_remove == 1:
-            user_add_task = input("What task do you want to add?")
-            UNCF.actions.append(user_add_task)
-            print(UNCF)
-        elif add_or_remove == 2:
-            for tasks in UNCF.actions:
-                print(tasks, UNCF.actions)
-            user_remove_task = int(input("Select the action you want to remove: "))
-            UNCF.actions.pop(user_remove_task)
-            print(UNCF)
+    menu.edit_scholarship(MHEC, TMCF, UNCF)
