@@ -1,1 +1,0 @@
-# checksum program: generate a file and a checksum will be provided
