@@ -39,8 +39,9 @@ map <string, Employee> Employee::employeeDatabase;
 
 int main() {
     //Inserting values in the employee database
-    Employee::employeeDatabase["9821"] = Employee("Katherine", "Johnson", "9821", "1234");
-
+    Employee::employeeDatabase["0664"] = Employee("David", "Wilson", "0664", "0626");
+    Employee::employeeDatabase["0481"] = Employee("Helen", "Gayle", "0481", "1126");
+    Employee::employeeDatabase["0781"] = Employee("Carlton", "Brown", "0781", "0726");
     //Testing the code
     Employee temp;
     temp.verifyUserTest();
