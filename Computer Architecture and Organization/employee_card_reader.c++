@@ -38,16 +38,29 @@ class Employee {
 map <string, Employee> Employee::employeeDatabase;
 
 int main() {
+    //Initializing variables
+    int userChoice;
+    Employee temp;
+    
     //Inserting values in the employee database
     Employee::employeeDatabase["0664"] = Employee("David", "Wilson", "0664", "0626");
     Employee::employeeDatabase["0481"] = Employee("Helen", "Gayle", "0481", "1126");
     Employee::employeeDatabase["0781"] = Employee("Carlton", "Brown", "0781", "0726");
+    
     //Testing the code
-    Employee temp;
     temp.verifyUserTest();
 
-    return 0;
+    cout << "Which choice do you want to pick between 1 and 2 " << endl;
+    cin >> userChoice;
 
+    if(userChoice = 1) {
+        temp.verifyUserTest();
+    }
+    else if (userChoice = 2) {
+        temp.createUser();
+    }
+    
+    return 0;
 }
 
 void Employee::menu() {
@@ -74,7 +87,7 @@ void Employee::menu() {
 }
 
 //Verifying if the user is in the database
-void Employee::verifyUserTest() {
+void Employee::verifyUser() {
     string enteredID;
     bool found = false;
 
@@ -87,23 +100,8 @@ void Employee::verifyUserTest() {
         cout << "Employee NOT found" << endl;
     }
 }
-void Employee::verifyUser() {
-    string enteredID, enteredPassword;
 
-    cout << "Please enter your 4 digit employee ID " << endl;
-    cin >> enteredID;
-    
-    cout << "Please enter your 4 digit employee password" << endl;
-    cin >> enteredPassword;
-
-    if(employeeDatabase.count(enteredID) == 0) {
-        cout << "User not found." << endl;
-        return;
-    }
-
-    cout << "Access Granted " << endl;
-}
-
+//Creating a new user in the database
 void Employee::createUser() {
    string tempfirst, tempLast, tempID, tempPin;
 
@@ -127,18 +125,14 @@ void Employee::createUser() {
     cin >> tempPin;
    }
    
-   Employee newAccount(tempfirst, tempLast, tempID, tempPin);
-   Employee::employeeDatabase[tempID] = newAccount; 
+   Employee::employeeDatabase[tempID] = Employee(tempfirst, tempLast, tempID, tempPin);
 
 }
 
 //The Cache Layer which simulates the M1-SRAM
-
 struct CacheLine {
     Employee profile;
-
     int lastAccessTime; // timestamp for LRU
-
 };
 
 class CacheController {
