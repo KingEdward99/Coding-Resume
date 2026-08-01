@@ -8,18 +8,30 @@ using namespace std;
 
 class Node {
     public:
-        string name;
+        string firstName;
+        string lastName;
+        string email;
+        int studentID;
+        int phoneNumber;
         Node* next;
         
         //Default constructor
         Node () {
-            name = "";
+            firstName = "";
+            lastName = "";
+            email = "";
+            studentID = 0;
+            phoneNumber = 0; 
             next = nullptr;
         };
 
         //Parameterized constructor
-        Node (string name) {
-            this->name = name;
+        Node (string firstName, string lastName, string email, int studentID, int phoneNumber) {
+            this->firstName = firstName;
+            this->lastName = lastName;
+            this->email = email;
+            this->studentID = studentID;
+            this->phoneNumber = phoneNumber;
             next = nullptr;
         }
 };
@@ -34,10 +46,10 @@ class HousingWaitlist {
             head = nullptr;
         }
 
-        void insertStudentAtEnd(string name) {
+        void insertStudentAtEnd(string firstName, string lastName, string email, int studentID, int phoneNumber) {
 
             //Creating the new student / node
-            Node* newStudent = new Node(name);
+            Node* newStudent = new Node(firstName,lastName,email,studentID,phoneNumber);
 
             //Checking to see if the linked list is empty
             if (head == nullptr) {
@@ -59,9 +71,11 @@ class HousingWaitlist {
 
         //Printing the linked list
         void printWaitList() {
+            int position = 1;
             Node* current = head;
             while(current != nullptr) {
-                cout << current->name;
+                cout << position++ << " ";
+                cout << current->firstName;
                 if(current->next != nullptr) {
                     cout << " -> ";
                 }
@@ -71,14 +85,17 @@ class HousingWaitlist {
 
         cout << endl;
     }
+
 };
 
 int main () {
     //Creating the waitlist object
     HousingWaitlist list;
 
-    list.insertStudentAtEnd("Dasean");
-    list.insertStudentAtEnd("Jeremy");
+    //Inserting students in the list
+    list.insertStudentAtEnd("Wendell", "Russell", "wendellrussell@gmail.com", 1976, 2024046719);
+    list.insertStudentAtEnd("Cleveland", "Dennard", "clevelanddennard@gmail.com", 1977, 2024047791);
+    list.insertStudentAtEnd("Lisle", "Carter", "lislecarter@gmail.com",1982,2024042891);
 
     list.printWaitList();
 
