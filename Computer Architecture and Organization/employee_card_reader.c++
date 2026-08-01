@@ -28,10 +28,9 @@ class Employee {
 
         //methods
         void setPassword();
-        void verifyUser();
+        void verifyEmployee();
         void createUser();
         void menu();
-        void verifyUserTest();
 };
 
 //Initializing the employee database
@@ -42,23 +41,13 @@ int main() {
     int userChoice;
     Employee temp;
     
+    //Menu for the user their options
+    temp.menu();
+    
     //Inserting values in the employee database
     Employee::employeeDatabase["0664"] = Employee("David", "Wilson", "0664", "0626");
     Employee::employeeDatabase["0481"] = Employee("Helen", "Gayle", "0481", "1126");
     Employee::employeeDatabase["0781"] = Employee("Carlton", "Brown", "0781", "0726");
-    
-    //Testing the code
-    temp.verifyUserTest();
-
-    cout << "Which choice do you want to pick between 1 and 2 " << endl;
-    cin >> userChoice;
-
-    if(userChoice = 1) {
-        temp.verifyUserTest();
-    }
-    else if (userChoice = 2) {
-        temp.createUser();
-    }
     
     return 0;
 }
@@ -69,15 +58,20 @@ void Employee::menu() {
     while (userOption == 0){
         cout << "Welcome to employee account management system. " << endl;
         cout << "To create your account, press 1. " << endl;
-        cout << "Press 2 to exit. " << endl;
+        cout << "To verify you account, press 2. " << endl;
+        cout << "Press 3 to exit. " << endl;
         cin >> userOption;
 
         if (userOption == 1) {
             createUser();
         }
         else if (userOption == 2) {
-            cout << "Exiting the program..." << endl;
+            verifyEmployee();
             exit(0); 
+        }
+        else if (userOption == 3) {
+            cout << "Exiting the program..." << endl;
+            exit(0);
         }
         else {
             cout << "Invalid input!" << endl; 
@@ -87,22 +81,26 @@ void Employee::menu() {
 }
 
 //Verifying if the user is in the database
-void Employee::verifyUser() {
+void Employee::verifyEmployee() {
+    //Initializing our variables 
     string enteredID;
-    bool found = false;
 
+    //User enters their ID
     cout << "Please enter your 4 digit employee ID: ";
     cin >> enteredID;
 
-    if (employeeDatabase.count(enteredID)) {
-        cout << "Employee match" << endl;
-    } else {
-        cout << "Employee NOT found" << endl;
+    //Verifying the user ID can be found in the database
+    if (employeeDatabase.find(enteredID) != employeeDatabase.end()) {
+        cout << "Employee is in the database. " << endl;
+    }
+    else {
+        cout << "Employee is not in the database. " << endl; 
     }
 }
 
 //Creating a new user in the database
 void Employee::createUser() {
+    //Initializing variables
    string tempfirst, tempLast, tempID, tempPin;
 
    cout << "You are at the create user section " << endl;
@@ -115,16 +113,21 @@ void Employee::createUser() {
    
    cout << "Enter a 4 digit userID " << endl;
    tempID = "";
+   
+   //Making sure the user ID is 4 digits
    while(tempID.length() != 4) {
     cin >> tempID;
    }
    
+   //Making sure the pin 4 digits
    cout << "Enter a 4 digit PIN" << endl;
    tempPin = "";
+
    while(tempPin.length() != 4) {
     cin >> tempPin;
    }
    
+   //Adding the user in the database
    Employee::employeeDatabase[tempID] = Employee(tempfirst, tempLast, tempID, tempPin);
 
 }
