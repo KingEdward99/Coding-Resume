@@ -86,6 +86,25 @@ class HousingWaitlist {
         cout << endl;
     }
 
+    string menu () {
+        string firstName, lastName, email;
+        int studentID, phoneNumber; 
+        cout << "Welcome to the Alex Haley Housing Waitlist." << endl;
+        cout << "Please enter your first name, last name, email, student ID, phone number. " << endl;
+        cout << " First Name: " << endl;
+        cin >> firstName; 
+        cout << " Last Name: " << endl; 
+        cin >> lastName;
+        cout << "Email: " << endl;
+        cin >> email;
+        cout << "Student ID: " << endl; 
+        cin >> studentID;
+        cout << "Phone Number: " << endl;
+        cin >> phoneNumber;
+
+        return firstName;
+    }
+
 };
 
 int main () {
@@ -96,6 +115,8 @@ int main () {
     list.insertStudentAtEnd("Wendell", "Russell", "wendellrussell@gmail.com", 1976, 2024046719);
     list.insertStudentAtEnd("Cleveland", "Dennard", "clevelanddennard@gmail.com", 1977, 2024047791);
     list.insertStudentAtEnd("Lisle", "Carter", "lislecarter@gmail.com",1982,2024042891);
+
+    list.menu();
 
     list.printWaitList();
 
