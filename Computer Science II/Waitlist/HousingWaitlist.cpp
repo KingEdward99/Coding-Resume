@@ -102,6 +102,11 @@ class HousingWaitlist {
         cout << "Phone Number: " << endl;
         cin >> phoneNumber;
 
+        /*
+        insertStudentAtEnd(firstName, lastName, email, studentID, phoneNumber);
+        printWaitList();
+        */
+       
         return firstName;
     }
 
