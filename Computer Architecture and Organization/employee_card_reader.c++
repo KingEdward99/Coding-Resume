@@ -40,14 +40,15 @@ int main() {
     //Initializing variables
     int userChoice;
     Employee temp;
-    
-    //Menu for the user their options
-    temp.menu();
-    
+
+
     //Inserting values in the employee database
     Employee::employeeDatabase["0664"] = Employee("David", "Wilson", "0664", "0626");
     Employee::employeeDatabase["0481"] = Employee("Helen", "Gayle", "0481", "1126");
     Employee::employeeDatabase["0781"] = Employee("Carlton", "Brown", "0781", "0726");
+
+    //Menu for the user their options
+    temp.menu();
     
     return 0;
 }
