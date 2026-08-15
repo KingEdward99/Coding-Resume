@@ -1,12 +1,14 @@
 /*
     This program allows the user to see what position they are in when they enter their information
-    in the housing queue.
+    in the housing queue. This program uses linked listss
 */
 
 #include <iostream>
 using namespace std;
 
+//Creating a node class for the linked list
 class Node {
+    //information that the nodes will hold
     public:
         string firstName;
         string lastName;
@@ -36,6 +38,7 @@ class Node {
         }
 };
 
+//Class that holds the function of creating the housing waitlist
 class HousingWaitlist {
     private:
         Node* head; //pointer to the first student
@@ -46,6 +49,7 @@ class HousingWaitlist {
             head = nullptr;
         }
 
+        //Inserting the students at the end of the waitlist
         void insertStudentAtEnd(string firstName, string lastName, string email, int studentID, int phoneNumber) {
 
             //Creating the new student / node
@@ -85,11 +89,30 @@ class HousingWaitlist {
 
         cout << endl;
     }
+    //Introduces the options to the user
+    void menu() {
+        int userChoice;
+        cout << "Welcome to the Haley Student Housing Waitlist." << endl;
+        cout << "If you want to view the current waitlist, press 1." << endl;
+        cout << "If you want to enter your name into the waitlist, press 2." << endl;
 
-    string menu () {
+        //User select what choice they want 
+        cin >> userChoice;
+
+        //User displays the queue
+        if(userChoice == 1) {
+            printWaitList();
+        }
+        //User enters their name and sees their position in the queue 
+        else if (userChoice == 2) {
+            enterWaitlist();
+        }
+    }
+
+    //Process of the user entering their information in the queue
+    string enterWaitlist () {
         string firstName, lastName, email;
         int studentID, phoneNumber; 
-        cout << "Welcome to the Alex Haley Housing Waitlist." << endl;
         cout << "Please enter your first name, last name, email, student ID, phone number. " << endl;
         cout << " First Name: " << endl;
         cin >> firstName; 
@@ -102,11 +125,10 @@ class HousingWaitlist {
         cout << "Phone Number: " << endl;
         cin >> phoneNumber;
 
-        /*
+        //After the student enters their information in the queue, it displays their information 
         insertStudentAtEnd(firstName, lastName, email, studentID, phoneNumber);
         printWaitList();
-        */
-       
+        
         return firstName;
     }
 
@@ -116,14 +138,13 @@ int main () {
     //Creating the waitlist object
     HousingWaitlist list;
 
-    //Inserting students in the list
+    //Inserting students in the list and this is our default waitlist
     list.insertStudentAtEnd("Wendell", "Russell", "wendellrussell@gmail.com", 1976, 2024046719);
     list.insertStudentAtEnd("Cleveland", "Dennard", "clevelanddennard@gmail.com", 1977, 2024047791);
     list.insertStudentAtEnd("Lisle", "Carter", "lislecarter@gmail.com",1982,2024042891);
 
+    //Running the program
     list.menu();
-
-    list.printWaitList();
 
     return 0;
 }
