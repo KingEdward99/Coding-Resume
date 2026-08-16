@@ -1,6 +1,6 @@
 """
-    This program simulates the key locaitons of different houses in a neighboorhood
-    It then finds the best route to remove snow from each edge and node
+    This program simulates the key locations of different houses in a neighboorhood
+    It then checks to see if the graph has a eulerian path or cycle. 
 """
 #importing queue data structure
 from collections import deque
