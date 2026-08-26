@@ -58,6 +58,7 @@ The script performs a basic DNS reconnaissance step using the **nslookup** utili
 - DNS record analysis
 - Reconnaissance techniques
 
+---
 ### **5. WHOIS Lookup (Bash)**
 The script performs a **WHOIS lookup** on a target domain to gather publicly available regsitration and ownership information. WHOIS data often includes details such as registrars, administrative contacts, creation/expiration dates, and name-server information.
 

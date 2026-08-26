@@ -52,6 +52,13 @@ A task tracking system for managing multiple scholarships. Users can:
 
 ---
 
+### **5. Housing Queue (C++)**
+A program that notifies what place they are in within a queue. Users can:
+- Enter their information like name, email, student ID, and phone number
+- The program enters them in a linked list queue where they can see who is in front of them
+
+**Concepts demonstrated:** nodes, linked lists, methods, classes
+
 ## Skills Demonstrated
 Across these programs, I practiced and strengthened:
 
@@ -61,7 +68,7 @@ Across these programs, I practiced and strengthened:
 - Menu-driven user interfaces
 - Input validation and error handling
 - Financial calculation and modeling 
-- Working with lists, dictionaries, and custom classes
+- Working with lists, dictionaries, linked lists, and custom classes
 - Designing multi-step workflows
 - Clean, readable program structure
 ---
