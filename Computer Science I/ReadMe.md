@@ -68,6 +68,16 @@ A tax‑estimation program that:
 
 ---
 
+Milk Economics Program (C++)
+A milk-production calculation program that:
+- Prompts the user for the total liters of milk produced
+- Computes the number of cartons required to package the milk
+- Calculates the total production cost based on cost per liter
+- Computes total profit based on profit per carton 
+
+**Concepts demonstrated:** multi-step arithmetic, rounding with ceil(), user input handling, real-world economic handling, clear variable-driven computation
+
+---
 ## Skills Demonstrated
 Across these programs, I practiced and strengthened:
 
