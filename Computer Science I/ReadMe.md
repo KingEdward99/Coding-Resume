@@ -68,7 +68,7 @@ A tax‑estimation program that:
 
 ---
 
-Milk Economics Program (C++)
+### **7. Milk Economics Program (C++)**
 A milk-production calculation program that:
 - Prompts the user for the total liters of milk produced
 - Computes the number of cartons required to package the milk
