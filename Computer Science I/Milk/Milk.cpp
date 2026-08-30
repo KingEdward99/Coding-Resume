@@ -8,7 +8,6 @@
     The cost of producing one liter of milk is $0.38
     The profit of each carton of milk is $0.27
 */
-
 #include <iostream>
 #include <cmath>
 using namespace std;
