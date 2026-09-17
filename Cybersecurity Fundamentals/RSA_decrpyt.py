@@ -1,3 +1,17 @@
+#This program is a RSA decryption script. It was derived from the RSA decryption tool guide
+
+small_prime = None #the value p in the equation
+
+large_prime = None #the value q in the equation
+
+encrypt_exponent = None #the value e in the equation
+
+modulus = small_prime * large_prime #n = p * q
+
+message = "" #ciphertext
+
+eulers_totient = (small_prime-1)*(large_prime -1) #Q(n) = (p-1)*(q-1)
+
 e = 43
 p = 83
 q = 13
