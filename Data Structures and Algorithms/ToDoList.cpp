@@ -1,1 +1,1 @@
-//Creating a to do list using stacks 
+//Creating a to do scholarships list using FIFOs
