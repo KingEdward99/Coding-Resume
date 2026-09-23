@@ -1,10 +1,20 @@
-#This program is a RSA decryption script. It was derived from the RSA decryption tool guide
+#This program is a RSA decryption script. It was derived from the RSA decryption tool guide from NCLs
 
-small_prime = None #the value p in the equation
+#Prompting the user to enter the values
+print("What is the small prime (p): ")
+small_prime = int(input())
 
-large_prime = None #the value q in the equation
+print("What is the large prime (q): ")
+large_prime = int(input())
 
-encrypt_exponent = None #the value e in the equation
+print("What is the encrypt exponent (e): ")
+encrypt_exponent = int(input())
+
+print("Enter the ciphertext values separated by commas: ")
+message = input()
+
+#Convert ciphertext into a list of integers 
+message = [int(x.strip()) for x in message.split(",")]
 
 modulus = small_prime * large_prime #n = p * q
 
@@ -12,27 +22,20 @@ message = "" #ciphertext
 
 eulers_totient = (small_prime-1)*(large_prime -1) #Q(n) = (p-1)*(q-1)
 
-e = 43
-p = 83
-q = 13
-n = p * q
-
-c = [
-    996, 894, 379, 631, 894,
-    82, 379, 852, 631, 677,
-    677, 194, 893
-]
-
-phi = (p - 1) * (q - 1)
-
 # compute private key d using Python's built-in modular inverse
-d = pow(e, -1, phi)
-print("d =", d)
+decrypt_exponent = pow(encrypt_exponent, -1, eulers_totient)
 
-# decrypt each ciphertext
-for i in c:
-    i_mod = i % n          # reduce ciphertext modulo n
-    m = pow(i_mod, d, n)   # RSA decryption
-    print(chr(m), end="")
+print(f"\nModulus (n): {modulus}")
+print(f"Euler Totient (phi): {eulers_totient}")
+print(f"Private exponent (d): {decrypt_exponent}\n")
 
-print()
+# Decrypt ciphertext
+plaintext = ""
+
+for m in message:
+    c_mod = m % modulus              # normalize ciphertext
+    m = pow(c_mod, decrypt_exponent, modulus)        # RSA decryption
+    plaintext += chr(m)
+
+print("Decrypted message:")
+print(plaintext)
