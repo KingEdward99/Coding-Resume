@@ -7,19 +7,21 @@
 class Student:
     name = ""
     major = ""
+    classification = ""
 
 Student.name = "Eddy"
 Student.major = "Computer Science"
+Student.classification = "Senior"
 
 #Student Database, using a list for easier traversal and accessibility
 studentDatabase = [
-    ["Eddy", "Computer Science"],
-    ["Jeremiah", "Finance"],
-    ["Maya", "Criminal Justice" ]
+    ["Eddy", "Computer Science", "Senior"],
+    ["Jeremiah", "Finance", "Freshman"],
+    ["Maya", "Criminal Justice", "Sophomore"]
 ]
 
 #Displaying the students
-print(Student.name + " " + Student.major)
+print(Student.name + " " + Student.major + " " + Student.classification)
 
 #Displaying the database
 print(studentDatabase)
