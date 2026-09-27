@@ -25,3 +25,9 @@ print(Student.name + " " + Student.major + " " + Student.classification)
 
 #Displaying the database
 print(studentDatabase)
+
+#Having the user enter their info
+print("Welcome to the CMRC Room-mate. We will help you find the ideal roommate.")
+name = input("Please enter your first name: ")
+major = input("Please enter your major: ")
+classification = input("Please enter your classification: ")
