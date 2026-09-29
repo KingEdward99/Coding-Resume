@@ -9,6 +9,14 @@ class Student:
     major = ""
     classification = ""
 
+    proper_classification = ["Freshman", "Sophomore", "Junior", "Senior"]
+
+    if classification not in proper_classification:
+        raise ValueError (
+            f"{classification} is not a valid choice. \n "
+            "Please pick either Freshman, Sophomore, Junior, or Senior"
+        )
+
 Student.name = "Eddy"
 Student.major = "Computer Science"
 Student.classification = "Senior"
