@@ -16,6 +16,30 @@ class Student:
             f"{classification} is not a valid choice. \n "
             "Please pick either Freshman, Sophomore, Junior, or Senior"
         )
+    
+    def matching_level():
+        """
+            Calculates the matching level between two students 
+            Returns 'High', 'Medium' or 'Low'
+        """
+        student1_major = ""
+        student2_major = ""
+        student1_classification = ""
+        student2_classification = ""
+        match = 0
+
+        if student1_major == student2_major:
+            match += 1
+        
+        if student1_classification == student2_classification:
+            match += 1
+        
+        if match == 2:
+            return "High"
+        elif match == 1:
+            return "Medium"
+        else:
+            return "Low"
 
 Student.name = "Eddy"
 Student.major = "Computer Science"
@@ -27,6 +51,7 @@ studentDatabase = [
     ["Jeremiah", "Finance", "Freshman"],
     ["Maya", "Criminal Justice", "Sophomore"]
 ]
+
 
 #Displaying the students
 print(Student.name + " " + Student.major + " " + Student.classification)
