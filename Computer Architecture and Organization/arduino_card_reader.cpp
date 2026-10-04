@@ -4,6 +4,7 @@
 
 void setup() {
     pinMode (13, OUTPUT); //Setting pin 13 as an output
+    pinMode (2, INPUT); // Setting pin 2 as an input
 }
 
 void loop() {
