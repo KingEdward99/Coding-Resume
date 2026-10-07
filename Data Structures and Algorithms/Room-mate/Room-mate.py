@@ -8,6 +8,7 @@ class Student:
     name = ""
     major = ""
     classification = ""
+    id = 0
 
     proper_classification = ["Freshman", "Sophomore", "Junior", "Senior"]
 
@@ -16,6 +17,15 @@ class Student:
             f"{classification} is not a valid choice. \n "
             "Please pick either Freshman, Sophomore, Junior, or Senior"
         )
+    
+    def __init__(self, name, major, classification,id):
+        """
+        Creating the self instance
+        """
+        self.name = name
+        self.major = major
+        self.classificaiton = classification
+        self.id = id
     
     def matching_level():
         """
