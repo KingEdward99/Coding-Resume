@@ -2,22 +2,10 @@
     This program allows students to find their perfect roommate
     The program presents the user with potential roommates based on name and major
 """
-
+import random 
 #Student class to hold the main attributes
 class Student:
-    name = ""
-    major = ""
-    classification = ""
-    id = 0
 
-    proper_classification = ["Freshman", "Sophomore", "Junior", "Senior"]
-
-    if classification not in proper_classification:
-        raise ValueError (
-            f"{classification} is not a valid choice. \n "
-            "Please pick either Freshman, Sophomore, Junior, or Senior"
-        )
-    
     def __init__(self, name, major, classification,id):
         """
         Creating the self instance
@@ -27,6 +15,31 @@ class Student:
         self.classificaiton = classification
         self.id = id
     
+    def accountCreation():
+        """
+        Creating an account and inserting it into the database
+        """
+
+        #Having the user enter their info
+        print("Welcome to the CMRC Room-mate. We will help you find the ideal roommate.")
+        name = input("Please enter your first name: ")
+        major = input("Please enter your major: ")
+        classification = input("Please enter your classification: ")
+        id = random.randint(1,2000)
+
+        #Making sure the classification is the correct one
+        proper_classification = ["Freshman", "Sophomore", "Junior", "Senior"]
+
+        while classification not in proper_classification:
+            raise ValueError (
+            f"{classification} is not a valid choice. \n "
+            "Please pick either Freshman, Sophomore, Junior, or Senior"
+        )
+
+        newAccount = [name, major, classification,id]
+
+        studentDatabase.append(newAccount)
+   
     def matching_level():
         """
             Calculates the matching level between two students 
@@ -51,26 +64,18 @@ class Student:
         else:
             return "Low"
 
-Student.name = "Eddy"
-Student.major = "Computer Science"
-Student.classification = "Senior"
-
 #Student Database, using a list for easier traversal and accessibility
 studentDatabase = [
-    ["Eddy", "Computer Science", "Senior"],
-    ["Jeremiah", "Finance", "Freshman"],
-    ["Maya", "Criminal Justice", "Sophomore"]
+    ["Eddy", "Computer Science", "Senior", 1267],
+    ["Jeremiah", "Finance", "Freshman", 4356],
+    ["Maya", "Criminal Justice", "Sophomore", 8790]
 ]
 
+#Creating an object
+newStudent = Student("","","",0000)
 
-#Displaying the students
-print(Student.name + " " + Student.major + " " + Student.classification)
+#Calling the account creation
+Student.accountCreation()
 
 #Displaying the database
 print(studentDatabase)
-
-#Having the user enter their info
-print("Welcome to the CMRC Room-mate. We will help you find the ideal roommate.")
-name = input("Please enter your first name: ")
-major = input("Please enter your major: ")
-classification = input("Please enter your classification: ")
