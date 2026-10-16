@@ -39,7 +39,8 @@ class Student:
         newAccount = [name, major, classification,id]
 
         studentDatabase.append(newAccount)
-   
+
+class Matching:
     def matching_level():
         """
             Calculates the matching level between two students 
