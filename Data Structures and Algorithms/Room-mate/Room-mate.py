@@ -72,11 +72,24 @@ studentDatabase = [
     ["Maya", "Criminal Justice", "Sophomore", 8790]
 ]
 
+def menu():
+        menu_choice = 0
+        
+        print ("Welcome to the CMRC Room-mate matching system")
+        print("If you want to create an account, press 1")
+        print("If you want to view the list of potential roommmates, press 2")
+
+        menu_choice = int(input("What option do you want to pick: "))
+
+        if (menu_choice == 1):
+            Student.accountCreation()
+        elif(menu_choice == 2):
+            print(studentDatabase)
+
 #Creating an object
 newStudent = Student("","","",0000)
 
-#Calling the account creation
-Student.accountCreation()
+menu()
 
 #Displaying the database
 print(studentDatabase)
