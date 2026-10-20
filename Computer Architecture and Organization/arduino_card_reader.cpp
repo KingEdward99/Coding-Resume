@@ -23,14 +23,26 @@ void setup() {
 }
 
 void loop() {
-    digitalWrite(13,HIGH) // Turn the LED on
-    delay(2000) //Wait for 2 seconds
-    digitalWrite(13,LOW) // Turn the LED off
-    delay(2000)
+    digitalWrite(13,HIGH); // Turn the LED on
+    delay(2000); //Wait for 2 seconds
+    digitalWrite(13,LOW); // Turn the LED off
+    delay(2000);
 
     char customKey = customKeypad.getKey();
 
     if (customKey) {
         Serial.println(customKey);
+    }
+//Establishing the password and telling the user whether they got it right
+    int password = 9843;
+    if (char != password) {
+        digitalWrite(13,HIGH);
+        delay(5000);
+        digitalWrite(13,LOW);
+    }
+    else {
+        digitalWrite(14,HIGH);
+        delay(5000);
+        digitalWrite(14,LOW);s
     }
 }
