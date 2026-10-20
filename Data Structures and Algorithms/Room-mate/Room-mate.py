@@ -2,18 +2,20 @@
     This program allows students to find their perfect roommate
     The program presents the user with potential roommates based on name and major
 """
+from time import time
 import random 
+
 #Student class to hold the main attributes
 class Student:
 
-    def __init__(self, name, major, classification,id):
+    def __init__(self, name, major, classification,_id):
         """
         Creating the self instance
         """
         self.name = name
         self.major = major
         self.classificaiton = classification
-        self.id = id
+        self._id = random.randint(1000,5000)
     
     def accountCreation():
         """
@@ -25,7 +27,6 @@ class Student:
         name = input("Please enter your first name: ")
         major = input("Please enter your major: ")
         classification = input("Please enter your classification: ")
-        id = random.randint(1,2000)
 
         #Making sure the classification is the correct one
         proper_classification = ["Freshman", "Sophomore", "Junior", "Senior"]
@@ -46,17 +47,14 @@ class Matching:
             Calculates the matching level between two students 
             Returns 'High', 'Medium' or 'Low'
         """
-        student1_major = ""
-        student2_major = ""
-        student1_classification = ""
-        student2_classification = ""
-        match = 0
-
-        if student1_major == student2_major:
-            match += 1
+        student1 = Student("","","",0000)
         
-        if student1_classification == student2_classification:
-            match += 1
+        match = 0
+        for i in range(studentDatabase):
+            if student1.major == studentDatabase[(4*i)+1]:
+                match += 1
+            if student1.classificaiton == studentDatabase[(4*i)+3]:
+                match += 1
         
         if match == 2:
             return "High"
@@ -88,8 +86,6 @@ def menu():
 
 #Creating an object
 newStudent = Student("","","",0000)
+newStudent = Matching()
 
 menu()
-
-#Displaying the database
-print(studentDatabase)
