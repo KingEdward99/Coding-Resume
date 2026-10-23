@@ -17,6 +17,9 @@ char hexakeys [ROWS][COLS] = {
 
 Keypad customKeypad = Keypad(makeKeymap(hexaKeys, rowPins, colPins, ROWS, COLS));
 
+// change based on how you have them set up on your Arduino, each numbers corresponds to the R pins
+byte rowPins[ROWS] = {9,8,7,6}; 
+bytecolPins[COLS] = {5,4,3,2};
 void setup() {
     pinMode (13, OUTPUT); //Setting pin 13 as an output
     pinMode (2, INPUT); // Setting pin 2 as an input
