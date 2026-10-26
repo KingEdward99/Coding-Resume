@@ -1,3 +1,14 @@
 This is a program that prepares high school students for Bowie State. 
 In terms of computer issues, this addresses a lack of accessibility and knowledge that plagues
 low income and/or first generation students
+
+
+Explore FedRamp – governance and compliance in cloud
+
+HIPAA,
+
+PCI DSS
+
+CMMC
+
+NIST 800-53
