@@ -68,6 +68,15 @@ The script performs a **WHOIS lookup** on a target domain to gather publicly ava
 - OSINT
 - Bash Scripting
 - Reconnaissance techniques
+
+### **6. RSA Decrypt (Python)**
+This Python script decrypts RSA ciphertext and outputs the original plaintext message. It was developed based on concepts and cryptography challenges inspired by the National Cyber League (NCL).
+
+**Concepts demonstrated:**
+- Python Programming 
+- Public-Key Cryptography 
+- Cryptography Analysis 
+- Modular Arithmetic
 ---
 
 ## Skills Demonstrated
@@ -80,6 +89,8 @@ Across these programs, I practiced and strengthened:
 - **Linux Log Analysis:** using cat, less, head, and tail to triage files and extract meaningful information
 - **Security Automation:** creating repeatable workflows that consolidate reconnaissance results into structured output files 
 - **Reconnaisance Methodology:** applying early-phase penetration testing techniques to map assets, identify exposures, and enumerate services
+- **Python Programming:** developed a Python script that automates the decryption of RSA-encrypted ciphertext and outputs the corresponding plaintext.
+- **Public-Key Cryptography:** utilized RSA encryption principles to understand and implement the process of recovering plaintext from ciphertext.
 ---
 
 ## How to Run the Programs
