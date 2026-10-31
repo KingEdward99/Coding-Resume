@@ -1,8 +1,7 @@
-CMRC Room-mate Matching System
+# CMRC Room-mate Matching System
 
 A command-line application designed to match college students for potential roommates based on their major and classification.
 
- 
 
 ## Features
 
@@ -38,7 +37,7 @@ To run this application, you will need the following installed on your system:
 
  
 
-##Usage
+## Usage
 
 This application is run from the command line
 
@@ -50,7 +49,7 @@ This command will start an interactive prompt to guide you through creating a ne
 
  
 
-##Architecture
+## Architecture
 
 The system is designed using Object-Oriented principles and consists of two primary classes:
 
