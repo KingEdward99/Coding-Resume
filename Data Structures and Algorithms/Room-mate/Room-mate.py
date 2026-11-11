@@ -37,6 +37,14 @@ class Student:
             "Please pick either Freshman, Sophomore, Junior, or Senior"
         )
 
+        #Making sure the major is the correct one
+        proper_major = ["Computer Science", "Nursing", "Business", "Criminal Justice"]
+        while major not in proper_major:
+            raise ValueError (
+            f"{major} is not a valid choice. \n "
+            "Please pick either Computer Science, Nursing, Business, or Criminal Justice"
+        )
+
         newAccount = [name, major, classification,id]
 
         studentDatabase.append(newAccount)
@@ -66,7 +74,7 @@ class Matching:
 #Student Database, using a list for easier traversal and accessibility
 studentDatabase = [
     ["Eddy", "Computer Science", "Senior", 1267],
-    ["Jeremiah", "Finance", "Freshman", 4356],
+    ["Jeremiah", "Business", "Freshman", 4356],
     ["Maya", "Criminal Justice", "Sophomore", 8790]
 ]
 
@@ -83,6 +91,8 @@ def menu():
             Student.accountCreation()
         elif(menu_choice == 2):
             print(studentDatabase)
+        elif(menu_choice == 3):
+            print("Rank them")
 
 #Creating an object
 newStudent = Student("","","",0000)
